@@ -7,15 +7,18 @@ public class ColliderScript : MonoBehaviour
     // Start is called before the first frame update
 
 
-    private void OnTriggerEnter(Collider other)
+    
+
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (other.CompareTag("obstacle"))
+        if (collision.CompareTag("obstacle"))
         {
             GameManager.instance.gameOver = true;
+            Debug.Log("CRASH!!!");
         }
 
 
-        if (other.CompareTag("coin"))
+        if (collision.CompareTag("coin"))
         {
             GameManager.instance.score++;
         }

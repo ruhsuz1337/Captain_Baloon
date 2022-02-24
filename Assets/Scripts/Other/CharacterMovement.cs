@@ -6,8 +6,8 @@ using DG.Tweening;
 public class CharacterMovement : MonoBehaviour
 {
 
-    public float horizontalSpeed = 5f;
-    public float verticalSpeed = 10f;
+    
+    private float verticalSpeed = 10f;
     public float lerpTime = 10f;
 
     private float defaultVerticalSpeed;
@@ -27,6 +27,7 @@ public class CharacterMovement : MonoBehaviour
     {
 
         rb = GetComponent<Rigidbody2D>();
+        verticalSpeed = GameManager.instance.currentVerticalSpeed;
         //verticalSpeed = 0;
         
     }
@@ -43,7 +44,7 @@ public class CharacterMovement : MonoBehaviour
     void FixedUpdate()
     {
         //Rb.AddForce(0,0,Speed * Time.deltaTime);
-        rb.velocity = new Vector3(0, 0, horizontalSpeed);
+        rb.velocity = new Vector3(0, 0, 0);
 
         if (Input.touchCount > 0) //TOUCHING NOW
         {

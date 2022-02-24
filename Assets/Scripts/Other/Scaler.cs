@@ -31,8 +31,11 @@ public class Scaler : MonoBehaviour
         }
         else
         {
-            while(timerValue>.5)
-            timerValue -= Time.deltaTime * 1.5f;
+            if (timerValue > .5)
+            {
+                timerValue -= Time.deltaTime * 1.5f;
+
+            }
         }
 
 

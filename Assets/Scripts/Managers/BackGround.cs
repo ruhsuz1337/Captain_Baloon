@@ -5,7 +5,7 @@ using UnityEngine;
 public class BackGround : MonoBehaviour
 {
     public GameObject[] backgroundElements;
-    public float speed = 2f;
+    public float speed;
     private Vector3 startPos;
     public GameObject spawner;
     private Camera cam;
@@ -14,6 +14,7 @@ public class BackGround : MonoBehaviour
     void Start()
     {
         startPos = transform.position;
+        speed = GameManager.instance.backgroundSpeed;
         
     }
 
@@ -28,7 +29,7 @@ public class BackGround : MonoBehaviour
             transform.Translate(Vector3.down * 0 * Time.deltaTime);
         }
 
-        if(transform.position.y < -14)
+        if(transform.position.y < -20)
         {
             transform.position = spawner.transform.position;
         }

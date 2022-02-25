@@ -16,6 +16,8 @@ public class GameManager : MonoBehaviour
     public int sessionGold;
     public int totalGold;
 
+    public SpriteRenderer playerSkinBaloon;
+    public SpriteRenderer playerSkinTail;
 
     private void Awake()
     {

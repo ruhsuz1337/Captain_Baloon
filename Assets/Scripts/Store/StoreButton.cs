@@ -8,12 +8,25 @@ public class StoreButton : MonoBehaviour
 {
 
     [SerializeField]
+    private Button btn;
+
+    [SerializeField]
     private TMP_Text buttonText;
 
     [SerializeField]
     private string desiredText;
 
+    [SerializeField]
+    private int price;
+
+    [SerializeField]
+    private Sprite baloonSkin;
+
+    [SerializeField]
+    private Sprite baloonTail;
+
     private Image image;
+    
 
     private void Start()
     {
@@ -33,6 +46,12 @@ public class StoreButton : MonoBehaviour
 
     public void onClick()
     {
+        if(GameManager.instance.totalGold >= price)
+        {
+            GameManager.instance.playerSkinBaloon.sprite = baloonSkin;
+            GameManager.instance.playerSkinTail.sprite = baloonTail
+            btn.image.color = Color.gray;
+        }
 
     }
 }

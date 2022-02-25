@@ -15,6 +15,7 @@ public class CanvasManager : MonoBehaviour
     public GameObject endGamePanel;
     public GameObject score;
     public TMP_Text scoreText;
+    public TMP_Text totalGoldText;
     public TMP_Text endGameScoreText;
     private bool storeOpen;
     private bool endGameOpen;
@@ -55,6 +56,7 @@ public class CanvasManager : MonoBehaviour
     public void setScoreText()
     {
         scoreText.text = "Score: " + GameManager.instance.sessionGold;
+        totalGoldText.text = "Total Gold: " + PlayerPrefs.GetInt("totalGold");
     }
     public void startGame()
     {
@@ -108,6 +110,8 @@ public class CanvasManager : MonoBehaviour
             
         }
     }
+
+    
 
     public void endGame()
     {

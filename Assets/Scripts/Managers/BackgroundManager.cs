@@ -28,7 +28,6 @@ public class BackgroundManager : MonoBehaviour
     private void Update()
     {
         
-        Debug.Log(backgroundChangeTime);
         changeBackground();
     }
 

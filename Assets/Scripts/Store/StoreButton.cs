@@ -8,7 +8,7 @@ public class StoreButton : MonoBehaviour
 {
 
     [SerializeField]
-    private Button btn;
+    public Button btn;
 
     [SerializeField]
     private TMP_Text buttonText;
@@ -20,17 +20,26 @@ public class StoreButton : MonoBehaviour
     private int price;
 
     [SerializeField]
-    private Sprite baloonSkin;
+    public Sprite baloonSkin;
 
     [SerializeField]
-    private Sprite baloonTail;
+    public Sprite baloonTail;
 
-    private Image image;
-    
+    [SerializeField]
+    private Sprite imageIcon;
+
+    [SerializeField]
+    private Image img;
+
+    public bool selected;
+
+    private bool bought;
 
     private void Start()
     {
         setText();
+        setImage();
+        PlayerPrefs.SetInt(desiredText, 0);
 
     }
 
@@ -41,17 +50,33 @@ public class StoreButton : MonoBehaviour
 
     public void setImage()
     {
-
+        img.sprite = imageIcon;
     }
 
     public void onClick()
     {
-        if(GameManager.instance.totalGold >= price)
+
+        if (PlayerPrefs.GetInt(desiredText) == 0)
+        {
+            if (GameManager.instance.totalGold >= price)
+            {
+                GameManager.instance.playerSkinBaloon.sprite = baloonSkin;
+                GameManager.instance.playerSkinTail.sprite = baloonTail;
+                StoreController.instance.setSelectedButton(gameObject.GetComponent<StoreButton>());
+                GameManager.instance.totalGold -= price;
+                PlayerPrefs.SetInt("totalGold", GameManager.instance.totalGold);
+                PlayerPrefs.SetInt(desiredText, 1);
+                selected = true;
+            }
+        }else if (PlayerPrefs.GetInt(desiredText) == 1)
         {
             GameManager.instance.playerSkinBaloon.sprite = baloonSkin;
-            GameManager.instance.playerSkinTail.sprite = baloonTail
-            btn.image.color = Color.gray;
+            GameManager.instance.playerSkinTail.sprite = baloonTail;
+            StoreController.instance.setSelectedButton(gameObject.GetComponent<StoreButton>());
+            PlayerPrefs.SetInt(desiredText, 1);
+            selected = true;
         }
+        
 
     }
 }

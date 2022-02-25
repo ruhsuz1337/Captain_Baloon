@@ -6,8 +6,8 @@ using DG.Tweening;
 public class CharacterMovement : MonoBehaviour
 {
 
-    
-    private float verticalSpeed = 10f;
+
+    private float verticalSpeed;
     public float lerpTime = 10f;
 
     private float defaultVerticalSpeed;
@@ -37,43 +37,49 @@ public class CharacterMovement : MonoBehaviour
         transform.position = new Vector3(Mathf.Clamp(transform.position.x, -2f, 2f), Mathf.Clamp(transform.position.y, -4f, 4f), transform.position.z);
         if (GameManager.instance.gamesStarted)
         {
-           // verticalSpeed = defaultVerticalSpeed;
+            verticalSpeed = GameManager.instance.currentVerticalSpeed;
         }
 
     }
     void FixedUpdate()
     {
-        //Rb.AddForce(0,0,Speed * Time.deltaTime);
-        rb.velocity = new Vector3(0, 0, 0);
 
-        if (Input.touchCount > 0) //TOUCHING NOW
+        if (GameManager.instance.gamesStarted && !GameManager.instance.gameOver)
         {
-            Touch finger = Input.GetTouch(0);
-            
+            //Rb.AddForce(0,0,Speed * Time.deltaTime);
+            rb.velocity = new Vector3(0, 0, verticalSpeed);
 
-            //TOUCH BEGAN
-            if (finger.phase == TouchPhase.Began)
+            if (Input.touchCount > 0) //TOUCHING NOW
             {
-                //Debug log baþladý...
+                Touch finger = Input.GetTouch(0);
+
+
+                //TOUCH BEGAN
+                if (finger.phase == TouchPhase.Began)
+                {
+                    //Debug log baþladý...
+                }
+
+                Touch screenTouch = Input.GetTouch(0);
+
+                //TOUCH MOVING
+                if (screenTouch.phase == TouchPhase.Moved)
+                {
+                    transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.Euler(0f, screenTouch.deltaPosition.x, 0f), lerpTime * Time.deltaTime);
+
+                    transform.Translate(screenTouch.deltaPosition.x * verticalSpeed * Time.deltaTime, 0f, 0f, Space.World);
+                    rb.velocity = new Vector3(screenTouch.deltaPosition.x * verticalSpeed * 0.8f, 0f, 0f);
+                }
+
+                //STILL TOUCHING BUT STILL
+                //ROTATION DEFAULT
+                if (finger.phase == TouchPhase.Stationary)
+                {
+                    // transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.Euler(0f, _firstAngle * 0.02f, 0f), lerpTime * Time.deltaTime);
+                }
+
             }
-
-            Touch screenTouch = Input.GetTouch(0);
-
-            //TOUCH MOVING
-            if (screenTouch.phase == TouchPhase.Moved)
-            {
-                transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.Euler(0f, screenTouch.deltaPosition.x, 0f), lerpTime * Time.deltaTime);
-
-                transform.Translate(screenTouch.deltaPosition.x * verticalSpeed * Time.deltaTime, 0f, 0f, Space.World);
-                rb.velocity = new Vector3(screenTouch.deltaPosition.x * verticalSpeed * 0.8f, 0f, 0f);
-            }
-
-            //STILL TOUCHING BUT STILL
-            //ROTATION DEFAULT
-            if (finger.phase == TouchPhase.Stationary)
-            {
-               // transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.Euler(0f, _firstAngle * 0.02f, 0f), lerpTime * Time.deltaTime);
-            }
+        
 
 
         }

@@ -6,15 +6,16 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
 
-    public float desiredVerticalSpeed = 10f;
+    public float desiredVerticalSpeed = 4f;
     public float currentVerticalSpeed;
     public float backgroundSpeed = 4f;
 
     public bool gamesStarted;
     public bool gameOver;
 
-    public int score;
-    
+    public int sessionGold;
+    public int totalGold;
+
 
     private void Awake()
     {
@@ -33,8 +34,9 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
-        gamesStarted = true;
+        gamesStarted = false;
         gameOver = false;
+        sessionGold = 0;
     }
 
     private void Update()
@@ -44,10 +46,12 @@ public class GameManager : MonoBehaviour
 
     private void gameStatus()
     {
-        if (gameOver)
+        if (gamesStarted && gameOver)
         {
             currentVerticalSpeed = 0;
             backgroundSpeed = 0;
+            totalGold += sessionGold;
+            CanvasManager.instance.endGame();
         }
 
         if (!gamesStarted)

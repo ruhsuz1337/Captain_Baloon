@@ -14,13 +14,13 @@ public class ColliderScript : MonoBehaviour
         if (collision.CompareTag("obstacle"))
         {
             GameManager.instance.gameOver = true;
-            Debug.Log("CRASH!!!");
         }
 
 
         if (collision.CompareTag("coin"))
         {
-            GameManager.instance.score++;
+            GameManager.instance.sessionGold++;
+            Destroy(collision.gameObject);
         }
     }
 }

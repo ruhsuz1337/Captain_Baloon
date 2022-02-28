@@ -55,7 +55,6 @@ public class GameManager : MonoBehaviour
 
     private void FixedUpdate()
     {
-        Debug.Log("qwohe");
         gameStatus();
     }
 

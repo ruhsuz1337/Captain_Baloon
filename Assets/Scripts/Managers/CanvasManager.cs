@@ -18,7 +18,6 @@ public class CanvasManager : MonoBehaviour
     public TMP_Text totalGoldText;
     public TMP_Text endGameScoreText;
     private bool storeOpen;
-    private bool endGameOpen;
 
 
     private void Awake()
@@ -64,7 +63,6 @@ public class CanvasManager : MonoBehaviour
         score.SetActive(true);
         startBtn.SetActive(false);
         storeBtn.SetActive(false);
-        endGameOpen = false;
 
     }
 
@@ -73,7 +71,6 @@ public class CanvasManager : MonoBehaviour
         SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().buildIndex);
         endGamePanel.SetActive(false);
         GameManager.instance.sessionGold = 0;
-        endGameOpen = false;
     }
 
     public void storeButton()
@@ -128,7 +125,6 @@ public class CanvasManager : MonoBehaviour
             endGameScoreText.text = scoreText.text;
             storeBtn.SetActive(true);
             score.SetActive(false);
-            endGameOpen = true;
             
 
            

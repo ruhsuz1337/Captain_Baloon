@@ -24,7 +24,6 @@ public class BackGround : MonoBehaviour
         coinPosArr = new Transform[8];
 
         float rndX = Random.Range(-1.5f, 1.5f);
-        int rndY = 0;
         
     }
 

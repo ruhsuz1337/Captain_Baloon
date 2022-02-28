@@ -56,7 +56,7 @@ public class CanvasManager : MonoBehaviour
     public void setScoreText()
     {
         scoreText.text = "Score: " + GameManager.instance.sessionGold;
-        totalGoldText.text = "Total Gold: " + PlayerPrefs.GetInt("totalGold");
+        totalGoldText.text = "Total Gold: " + GameManager.instance.totalGold;
     }
     public void startGame()
     {

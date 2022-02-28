@@ -33,7 +33,7 @@ public class GameManager : MonoBehaviour
         currentVerticalSpeed = desiredVerticalSpeed;
         StoreController.instance.getSelectedSkin();
         
-        PlayerPrefs.SetInt("totalGold", totalGold);
+        totalGold = PlayerPrefs.GetInt("totalGold");
 
 
     }

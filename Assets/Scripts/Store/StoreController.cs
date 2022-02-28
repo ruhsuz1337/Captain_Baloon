@@ -35,7 +35,14 @@ public class StoreController : MonoBehaviour
 
     public void getSelectedSkin()
     {
-        selectedBtn = buttonList[PlayerPrefs.GetInt("selectedSkinIndex")];
+        if(selectedBtn == null)
+        {
+            selectedBtn = buttonList[0];
+        }
+        else
+        {
+            selectedBtn = buttonList[PlayerPrefs.GetInt("selectedSkinIndex")];
+        }
         equipSkin();
         
     }

@@ -30,10 +30,7 @@ public class GameManager : MonoBehaviour
             instance = this;
         }
 
-        currentVerticalSpeed = desiredVerticalSpeed;
-        StoreController.instance.getSelectedSkin();
         
-        totalGold = PlayerPrefs.GetInt("totalGold");
 
 
     }
@@ -43,13 +40,23 @@ public class GameManager : MonoBehaviour
         gamesStarted = false;
         gameOver = false;
         sessionGold = 0;
-        
-    }
 
+        currentVerticalSpeed = desiredVerticalSpeed;
+        StoreController.instance.getSelectedSkin();
+
+        totalGold = PlayerPrefs.GetInt("totalGold");
+
+    }
+    /*
     private void Update()
     {
         gameStatus();
-        Debug.Log(StoreController.instance.selectedBtn.baloonSkin);
+    }*/
+
+    private void FixedUpdate()
+    {
+        Debug.Log("qwohe");
+        gameStatus();
     }
 
     private void gameStatus()

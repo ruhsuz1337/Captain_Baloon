@@ -10,6 +10,8 @@ public class BackGround : MonoBehaviour
     public GameObject coin;
     private GameObject[] coinArr;
 
+    public float yVal;
+
     [SerializeField]
     private GameObject background1;
     private GameObject background2;
@@ -45,7 +47,7 @@ private void FixedUpdate()
             transform.Translate(Vector3.down * 0 * Time.deltaTime);
         }
 
-        if(transform.position.y < -20)
+        if(transform.position.y < -yVal)
         {
             transform.position = spawner.transform.position;
             //coinSpawner();

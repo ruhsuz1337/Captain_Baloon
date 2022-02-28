@@ -31,12 +31,13 @@ public class GameManager : MonoBehaviour
         }
 
         
-
+        //
 
     }
 
     private void Start()
     {
+        //
         gamesStarted = false;
         gameOver = false;
         sessionGold = 0;
@@ -64,7 +65,6 @@ public class GameManager : MonoBehaviour
         {
             currentVerticalSpeed = 0;
             backgroundSpeed = 0;
-            totalGold += sessionGold;
             CanvasManager.instance.endGame();
             PlayerPrefs.SetInt("totalGold", totalGold);
         }

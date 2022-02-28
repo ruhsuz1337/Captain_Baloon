@@ -35,22 +35,26 @@ public class StoreController : MonoBehaviour
 
     public void getSelectedSkin()
     {
-        if(selectedBtn == null)
-        {
-            selectedBtn = buttonList[0];
-        }
-        else
-        {
+        
+            //selectedBtn = buttonList[0];
+        
             selectedBtn = buttonList[PlayerPrefs.GetInt("selectedSkinIndex")];
-        }
+       
         equipSkin();
         
     }
 
     public void equipSkin()
     {
-        GameManager.instance.playerSkinBaloon.sprite = selectedBtn.baloonSkin;
-        GameManager.instance.playerSkinTail.sprite = selectedBtn.baloonTail;
+        if(selectedBtn == null)
+        {
+            selectedBtn = buttonList[0];
+        }
+        
+            GameManager.instance.playerSkinBaloon.sprite = selectedBtn.baloonSkin;
+            GameManager.instance.playerSkinTail.sprite = selectedBtn.baloonTail;
+        
+        
     }
 
         

@@ -39,7 +39,15 @@ public class StoreButton : MonoBehaviour
     {
         setText();
         setImage();
-        PlayerPrefs.SetInt(desiredText, 0);
+        if (PlayerPrefs.GetInt(desiredText) == 0)
+        {
+            PlayerPrefs.SetInt(desiredText, 0);
+        }
+        else 
+        {
+            PlayerPrefs.SetInt(desiredText, 1);
+        }
+       
 
     }
 

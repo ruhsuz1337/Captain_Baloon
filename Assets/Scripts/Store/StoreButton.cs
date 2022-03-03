@@ -22,6 +22,8 @@ public class StoreButton : MonoBehaviour
     [SerializeField]
     public Sprite baloonSkin;
 
+    public Sprite hat;
+
     [SerializeField]
     public Sprite baloonTail;
 
@@ -74,7 +76,7 @@ public class StoreButton : MonoBehaviour
                 if (GameManager.instance.totalGold >= price)
                 {
                     GameManager.instance.playerSkinBaloon.sprite = baloonSkin;
-                    //GameManager.instance.playerSkinTail.sprite = baloonTail;
+                    GameManager.instance.playerSkinHat.sprite = hat;
                     StoreController.instance.setSelectedButton(gameObject.GetComponent<StoreButton>());
                     GameManager.instance.totalGold -= price;
                     PlayerPrefs.SetInt("totalGold", GameManager.instance.totalGold);

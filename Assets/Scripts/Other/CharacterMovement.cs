@@ -34,7 +34,7 @@ public class CharacterMovement : MonoBehaviour
 
     private void Update()
     {
-        transform.position = new Vector3(Mathf.Clamp(transform.position.x, -3, 3f), Mathf.Clamp(transform.position.y, -4f, 4f), transform.position.z);
+        transform.position = new Vector3(Mathf.Clamp(transform.position.x, -3.2f, 3.2f), Mathf.Clamp(transform.position.y, -4f, 4f), transform.position.z);
         if (GameManager.instance.gamesStarted)
         {
             verticalSpeed = GameManager.instance.currentVerticalSpeed;

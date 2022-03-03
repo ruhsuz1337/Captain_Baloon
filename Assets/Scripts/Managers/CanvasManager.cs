@@ -63,7 +63,7 @@ public class CanvasManager : MonoBehaviour
     }
     public void startGame()
     {
-        SoundManager.instance.startMusic.Play();
+        
 
         GameManager.instance.gamesStarted = true;
         score.SetActive(true);
@@ -76,7 +76,6 @@ public class CanvasManager : MonoBehaviour
 
     public void restartGame()
     {
-        SoundManager.instance.buttonClick.Play();
 
 
         SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().buildIndex);
@@ -88,7 +87,6 @@ public class CanvasManager : MonoBehaviour
     {
         if (!GameManager.instance.gameOver)
         {
-            SoundManager.instance.buttonClick.Play();
             if (!storeOpen)
             {
                 startBtn.SetActive(false);
@@ -122,7 +120,6 @@ public class CanvasManager : MonoBehaviour
 
     public void headsPanelClick()
     {
-        SoundManager.instance.buttonClick.Play();
 
         tailsPanel.SetActive(false);
         headPanel.SetActive(true);
@@ -132,7 +129,6 @@ public class CanvasManager : MonoBehaviour
 
     public void tailsPaneClickl()
     {
-        SoundManager.instance.buttonClick.Play();
 
         tailsPanel.SetActive(true);
         headPanel.SetActive(false);
@@ -142,7 +138,6 @@ public class CanvasManager : MonoBehaviour
 
     public void goldShopPanel()
     {
-        SoundManager.instance.buttonClick.Play();
 
         goldShop.SetActive(true);
         tailsPanel.SetActive(false);
@@ -150,7 +145,8 @@ public class CanvasManager : MonoBehaviour
     }
     public void endGame()
     {
-        SoundManager.instance.buttonClick.Play();
+        //SoundManager.instance.buttonClick.Play();
+       
 
 
         if (GameManager.instance.gameOver)

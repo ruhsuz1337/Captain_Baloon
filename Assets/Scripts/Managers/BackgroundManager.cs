@@ -5,8 +5,6 @@ using DG.Tweening;
 
 public class BackgroundManager : MonoBehaviour
 {
-    [SerializeField]
-    private int backgroundChangeTime = 5;
 
     [SerializeField]
     private GameObject background;
@@ -45,12 +43,12 @@ public class BackgroundManager : MonoBehaviour
         
         if (GameManager.instance.sessionGold >= treshold1)
         {
-            background.transform.DOMoveY(-7.5f, 2);
+            background.transform.DOMoveY(-18f, 2);
             
 
         }else if (GameManager.instance.sessionGold >= treshold2)
         {
-            background.transform.DOMoveY(-15f, 2);
+            background.transform.DOMoveY(-36f, 2);
         }
         
     }

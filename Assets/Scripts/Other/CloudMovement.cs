@@ -28,9 +28,9 @@ public class CloudMovement : MonoBehaviour
             transform.Translate(Vector3.right * 0 * Time.deltaTime);
         }
 
-        if (transform.position.x < -5)
+        if (transform.position.x < -10)
         {
-            transform.position = new Vector3(7.5f, 0, 0);
+            transform.position = new Vector3(10f, 0, -1);
         }
         if (GameManager.instance.gameOver)
         {

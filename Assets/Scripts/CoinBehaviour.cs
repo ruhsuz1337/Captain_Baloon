@@ -18,7 +18,7 @@ public class CoinBehaviour : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        movement();
+        //movement();
     
     }
 
@@ -26,11 +26,14 @@ public class CoinBehaviour : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
+            
             gameObject.GetComponent<SpriteRenderer>().enabled = false;
+            gameObject.GetComponent<Animator>().enabled = false;
+            SoundManager.instance.collectCoinSound();
             GameManager.instance.sessionGold++;
         }
     }
-
+    /*
     private void spawnAtTop()
     {
         if(transform.position.y < -10)
@@ -47,5 +50,5 @@ public class CoinBehaviour : MonoBehaviour
             transform.position += new Vector3(0, -coinSpeed, 0);
             spawnAtTop();
         }
-    }
+    }*/
 }

@@ -22,7 +22,6 @@ public class ColliderScript : MonoBehaviour
             if (P_Manager.instance.invincibilityCount > 0 && !P_Manager.instance.invincibility)
             {
 
-                SoundManager.instance.invincibleCrash.Play();
                 P_Manager.instance.invincibilityCount--;
                 gameObject.GetComponent<P_invincibility>().turnOffCol();
                 
@@ -31,13 +30,11 @@ public class ColliderScript : MonoBehaviour
                 
             }else if ( P_Manager.instance.invincibility)
             {
-                SoundManager.instance.invincibleCrash.Play();
 
                 return;
             }else if (!P_Manager.instance.invincibility)
             {
 
-                SoundManager.instance.branchCrash.Play();
                 GameManager.instance.gameOver = true;
                 GameManager.instance.totalGold += GameManager.instance.sessionGold;
 
@@ -47,6 +44,37 @@ public class ColliderScript : MonoBehaviour
 
 
         }
+
+        if (collision.CompareTag("bird"))
+        {
+
+            SoundManager.instance.playBirdHit();
+            if (P_Manager.instance.invincibilityCount > 0 && !P_Manager.instance.invincibility)
+            {
+
+                P_Manager.instance.invincibilityCount--;
+                gameObject.GetComponent<P_invincibility>().turnOffCol();
+
+
+
+
+            }
+            else if (P_Manager.instance.invincibility)
+            {
+
+                return;
+            }
+            else if (!P_Manager.instance.invincibility)
+            {
+
+                GameManager.instance.gameOver = true;
+                GameManager.instance.totalGold += GameManager.instance.sessionGold;
+
+            }
+        }
+
+
+        
 
         
 

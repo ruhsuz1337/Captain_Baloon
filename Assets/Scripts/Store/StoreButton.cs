@@ -25,6 +25,9 @@ public class StoreButton : MonoBehaviour
     public Sprite hat;
 
     [SerializeField]
+    private TMP_Text priceText;
+
+    [SerializeField]
     public Sprite baloonTail;
 
     [SerializeField]
@@ -58,6 +61,7 @@ public class StoreButton : MonoBehaviour
     public void setText()
     {
         buttonText.text = desiredText;
+        priceText.text = "" + price;
     }
 
     public void setImage()
@@ -67,8 +71,7 @@ public class StoreButton : MonoBehaviour
 
     public void onClick()
     {
-
-
+        SoundManager.instance.buttonClicker();
         if (head)
         {
             if (PlayerPrefs.GetInt(desiredText) == 0)
@@ -81,6 +84,7 @@ public class StoreButton : MonoBehaviour
                     GameManager.instance.totalGold -= price;
                     PlayerPrefs.SetInt("totalGold", GameManager.instance.totalGold);
                     PlayerPrefs.SetInt(desiredText, 1);
+                   
                     selected = true;
                 }
             }
@@ -90,6 +94,8 @@ public class StoreButton : MonoBehaviour
                 //GameManager.instance.playerSkinTail.sprite = baloonTail;
                 StoreController.instance.setSelectedButton(gameObject.GetComponent<StoreButton>());
                 PlayerPrefs.SetInt(desiredText, 1);
+                
+
                 selected = true;
             }
 
@@ -106,6 +112,8 @@ public class StoreButton : MonoBehaviour
                     GameManager.instance.totalGold -= price;
                     PlayerPrefs.SetInt("totalGold", GameManager.instance.totalGold);
                     PlayerPrefs.SetInt(desiredText, 1);
+                   
+
                     selected = true;
                 }
             }
@@ -115,6 +123,8 @@ public class StoreButton : MonoBehaviour
                 GameManager.instance.playerSkinTail.sprite = baloonTail;
                 StoreController.instance.setSelectedButton(gameObject.GetComponent<StoreButton>());
                 PlayerPrefs.SetInt(desiredText, 1);
+                
+
                 selected = true;
             }
         }

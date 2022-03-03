@@ -46,6 +46,7 @@ public class BirdSpawner : MonoBehaviour
     {
         if (GameManager.instance.gamesStarted && !GameManager.instance.gameOver)
         {
+            SoundManager.instance.playBirdFlying();
             int rndPosIndex = Random.Range(0, 2);
             if (rndPosIndex == 0)
             {

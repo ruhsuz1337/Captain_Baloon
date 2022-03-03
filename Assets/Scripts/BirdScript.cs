@@ -31,7 +31,6 @@ public class BirdScript : MonoBehaviour
             transform.Rotate(new Vector3(0, 180, 0));
         }
 
-        SoundManager.instance.birdWing.Play();
     }
 
     void Update()

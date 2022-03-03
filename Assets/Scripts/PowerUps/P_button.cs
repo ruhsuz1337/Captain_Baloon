@@ -39,7 +39,6 @@ public class P_button : MonoBehaviour
 
     public void onClickInvincibility()
     {
-        SoundManager.instance.buttonClick.Play();
 
         if (GameManager.instance.totalGold >= price)
         {
@@ -52,7 +51,6 @@ public class P_button : MonoBehaviour
 
     public void onClickSeconChance()
     {
-        SoundManager.instance.buttonClick.Play();
 
         if (GameManager.instance.totalGold >= price)
         {

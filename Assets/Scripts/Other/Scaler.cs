@@ -55,8 +55,8 @@ public class Scaler : MonoBehaviour
 
         }
         transform.localScale = new Vector3(CubeRootFunction(timerValue), CubeRootFunction(timerValue), CubeRootFunction(timerValue));
-        capsuleSize = new Vector2(transform.localScale.x , transform.localScale.y);
-        circleCol.size = capsuleSize;
+        capsuleSize = new Vector2(circleCol.size.x, circleCol.size.y);
+        //circleCol.size = transform.localScale;
     }
 
     public float CubeRootFunction(float timefloat)

@@ -68,9 +68,9 @@ public class BackGround : MonoBehaviour
             transform.Translate(Vector3.down * 0 * Time.deltaTime);
         }
         
-        if(transform.position.y < -yVal)
+        if(transform.position.y < -67.6)
         {
-            transform.position = spawnPos.position;
+            transform.position = new Vector3(0,105.2f,0);
             spawnAgainCoins();
             //coinSpawner();
         }

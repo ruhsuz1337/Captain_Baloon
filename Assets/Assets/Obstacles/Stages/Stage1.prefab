@@ -367,7 +367,7 @@ Transform:
   m_GameObject: {fileID: 2063237809436751646}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.5, y: 0.5, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 6261949242285354444}
   - {fileID: 3810863723365197298}
@@ -413,6 +413,9 @@ MonoBehaviour:
   startTile: 0
   spawnPos: {fileID: 1057621309951300661}
   getChildren: []
+  coinsArr: []
+  Magnet: {fileID: 0}
+  desiredMagnetSpawnRate: 0
 --- !u!1 &2772958988642132397
 GameObject:
   m_ObjectHideFlags: 0

@@ -3421,7 +3421,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   soundPlayer: {fileID: 725663244}
-  buttonClick: {fileID: 8300000, guid: a46109eb9f3aa3744b0e971c80180228, type: 3}
+  buttonClick: {fileID: 8300000, guid: 1aa39ea12e958494db565098f47b4b7a, type: 3}
   startClick: {fileID: 5060269920668483968, guid: 19832887dad67bc49a5f7be04f4b3b73, type: 3}
   startMusic: {fileID: 869848940376305498, guid: bd67ec178ca0d9740a95bcee97103af1, type: 3}
   coinCollect: {fileID: 8300000, guid: e2747f683a6a7d74e9e4a279c4d17372, type: 3}
@@ -3446,10 +3446,10 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 6ed4265e5f965424dae7c94417fd7753, type: 3}
-  m_PlayOnAwake: 0
+  m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0

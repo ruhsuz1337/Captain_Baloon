@@ -33,6 +33,8 @@ public class StoreButton : MonoBehaviour
 
     public bool selected;
 
+    public bool head;
+
     private bool bought;
 
     private void Start()
@@ -64,26 +66,57 @@ public class StoreButton : MonoBehaviour
     public void onClick()
     {
 
-        if (PlayerPrefs.GetInt(desiredText) == 0)
+
+        if (head)
         {
-            if (GameManager.instance.totalGold >= price)
+            if (PlayerPrefs.GetInt(desiredText) == 0)
+            {
+                if (GameManager.instance.totalGold >= price)
+                {
+                    GameManager.instance.playerSkinBaloon.sprite = baloonSkin;
+                    //GameManager.instance.playerSkinTail.sprite = baloonTail;
+                    StoreController.instance.setSelectedButton(gameObject.GetComponent<StoreButton>());
+                    GameManager.instance.totalGold -= price;
+                    PlayerPrefs.SetInt("totalGold", GameManager.instance.totalGold);
+                    PlayerPrefs.SetInt(desiredText, 1);
+                    selected = true;
+                }
+            }
+            else if (PlayerPrefs.GetInt(desiredText) == 1)
             {
                 GameManager.instance.playerSkinBaloon.sprite = baloonSkin;
-                GameManager.instance.playerSkinTail.sprite = baloonTail;
+                //GameManager.instance.playerSkinTail.sprite = baloonTail;
                 StoreController.instance.setSelectedButton(gameObject.GetComponent<StoreButton>());
-                GameManager.instance.totalGold -= price;
-                PlayerPrefs.SetInt("totalGold", GameManager.instance.totalGold);
                 PlayerPrefs.SetInt(desiredText, 1);
                 selected = true;
             }
-        }else if (PlayerPrefs.GetInt(desiredText) == 1)
-        {
-            GameManager.instance.playerSkinBaloon.sprite = baloonSkin;
-            GameManager.instance.playerSkinTail.sprite = baloonTail;
-            StoreController.instance.setSelectedButton(gameObject.GetComponent<StoreButton>());
-            PlayerPrefs.SetInt(desiredText, 1);
-            selected = true;
+
         }
+        else
+        {
+            if (PlayerPrefs.GetInt(desiredText) == 0)
+            {
+                if (GameManager.instance.totalGold >= price)
+                {
+                   // GameManager.instance.playerSkinBaloon.sprite = baloonSkin;
+                    GameManager.instance.playerSkinTail.sprite = baloonTail;
+                    StoreController.instance.setSelectedButton(gameObject.GetComponent<StoreButton>());
+                    GameManager.instance.totalGold -= price;
+                    PlayerPrefs.SetInt("totalGold", GameManager.instance.totalGold);
+                    PlayerPrefs.SetInt(desiredText, 1);
+                    selected = true;
+                }
+            }
+            else if (PlayerPrefs.GetInt(desiredText) == 1)
+            {
+               // GameManager.instance.playerSkinBaloon.sprite = baloonSkin;
+                GameManager.instance.playerSkinTail.sprite = baloonTail;
+                StoreController.instance.setSelectedButton(gameObject.GetComponent<StoreButton>());
+                PlayerPrefs.SetInt(desiredText, 1);
+                selected = true;
+            }
+        }
+        
         
 
     }

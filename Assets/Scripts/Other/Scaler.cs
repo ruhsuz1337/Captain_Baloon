@@ -10,7 +10,9 @@ public class Scaler : MonoBehaviour
 
     private float cuberootvalue;
 
-    private CircleCollider2D circleCol;
+    private CapsuleCollider2D circleCol;
+
+    private Vector2 capsuleSize;
 
     private void Awake()
     {
@@ -21,7 +23,7 @@ public class Scaler : MonoBehaviour
     {
         //transform.localScale = new Vector3(1, 3, 3);
         timerValue = 1;
-        circleCol = GetComponent<CircleCollider2D>();
+        circleCol = GetComponent<CapsuleCollider2D>();
     }
 
     // Update is called once per frame
@@ -35,9 +37,13 @@ public class Scaler : MonoBehaviour
             }
             else
             {
-                if (timerValue > .5)
+                if (timerValue > 0f)
                 {
-                    timerValue -= Time.deltaTime * 1.5f;
+                    timerValue -= Time.deltaTime * 1.01f;
+                    if (timerValue <= .01f)
+                    {
+                        GameManager.instance.gameOver = true;
+                    }
 
                 }
             }
@@ -49,7 +55,8 @@ public class Scaler : MonoBehaviour
 
         }
         transform.localScale = new Vector3(CubeRootFunction(timerValue), CubeRootFunction(timerValue), CubeRootFunction(timerValue));
-        circleCol.transform.localScale = transform.localScale;
+        capsuleSize = new Vector2(transform.localScale.x , transform.localScale.y);
+        circleCol.size = capsuleSize;
     }
 
     public float CubeRootFunction(float timefloat)

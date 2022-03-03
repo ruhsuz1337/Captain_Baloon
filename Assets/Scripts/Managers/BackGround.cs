@@ -8,32 +8,53 @@ public class BackGround : MonoBehaviour
     public float speed;
     public GameObject spawner;
     public GameObject coin;
-    private GameObject[] coinArr;
 
     public float yVal;
 
-    [SerializeField]
-    private GameObject background1;
-    private GameObject background2;
-    private Transform[] coinPosArr;
-    private int backgroundCount;
     
+    public bool startTile;
+
+    public Transform spawnPos;
+
+    public GameObject[] getChildren;
+    public List<GameObject> coinsArr;
+    public GameObject Magnet;
+
+    public float desiredMagnetSpawnRate;
 
 
     void Start()
     {
-        coinArr = new GameObject[8];
-        coinPosArr = new Transform[8];
-
-        float rndX = Random.Range(-1.5f, 1.5f);
         
+        getChildren = new GameObject[transform.childCount];
+        coinsArr = new List<GameObject>();
+
+        for (int i = 0; i < transform.childCount; i++)
+        {
+            getChildren[i] = transform.GetChild(i).gameObject;
+        }
+        if (startTile)
+        {
+            Destroy(gameObject, 5);
+        }
+
+        for (int i = 0; i < transform.childCount; i++)
+        {
+            if (transform.GetChild(i).CompareTag("coin"))
+            {
+                coinsArr.Add(transform.GetChild(i).gameObject);
+            }
+        }
+
+        spawnAgainCoins();
+
     }
 
 
 
 
-   
-private void FixedUpdate()
+
+    private void FixedUpdate()
     {
 
         
@@ -46,10 +67,11 @@ private void FixedUpdate()
         {
             transform.Translate(Vector3.down * 0 * Time.deltaTime);
         }
-
+        
         if(transform.position.y < -yVal)
         {
-            transform.position = spawner.transform.position;
+            transform.position = spawnPos.position;
+            spawnAgainCoins();
             //coinSpawner();
         }
         if (GameManager.instance.gameOver)
@@ -65,6 +87,40 @@ private void FixedUpdate()
 
 
     }
+
+    private void spawnAgainCoins()
+    {
+        
+        for (int i = 0; i < coinsArr.Count; i++)
+        {
+            coinsArr[i].GetComponent<SpriteRenderer>().enabled = true;
+            coinsArr[i].GetComponent<Animator>().enabled = true;
+            coinsArr[i].gameObject.tag = ("coin");
+            
+            
+
+        }
+
+        magnetSpawner(desiredMagnetSpawnRate);
+    }
+
+    private void magnetSpawner(float percentage)
+    {
+        float chance = Random.Range(0, 100);
+        int magnetIndex = Random.Range(0, coinsArr.Count);
+
+        if(chance < percentage)
+        {
+            coinsArr[magnetIndex].tag = "Pmagnet";
+            coinsArr[magnetIndex].GetComponent<Animator>().enabled = false;
+            coinsArr[magnetIndex].GetComponent<SpriteRenderer>().sprite = Magnet.GetComponent<SpriteRenderer>().sprite;
+
+        }
+        
+        
+        
+    }
+    
 
    
 }

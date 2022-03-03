@@ -6,7 +6,7 @@ public class CoinBehaviour : MonoBehaviour
 {
 
 
-    public float coinSpeed = .1f;
+    public float coinSpeed = .1f; 
 
     
     // Start is called before the first frame update

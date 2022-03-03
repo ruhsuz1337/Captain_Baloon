@@ -17,12 +17,20 @@ public class BackgroundManager : MonoBehaviour
     [SerializeField]
     private int treshold2 = 100;
 
+    
+
+    [SerializeField]
+    private List<GameObject> sides;
+
+    
+
 
 
 
 
     private void Start()
     {
+        
     }
 
     private void Update()
@@ -47,5 +55,11 @@ public class BackgroundManager : MonoBehaviour
         
     }
     
-
+    private void loopSides()
+    {
+        
+        
+            
+        
+    }
 }

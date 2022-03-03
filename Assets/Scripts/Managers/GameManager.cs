@@ -38,6 +38,7 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         //
+        
         gamesStarted = false;
         gameOver = false;
         sessionGold = 0;
@@ -48,11 +49,7 @@ public class GameManager : MonoBehaviour
         totalGold = PlayerPrefs.GetInt("totalGold");
 
     }
-    /*
-    private void Update()
-    {
-        gameStatus();
-    }*/
+    
 
     private void FixedUpdate()
     {

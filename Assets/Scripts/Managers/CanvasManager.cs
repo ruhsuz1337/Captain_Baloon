@@ -14,6 +14,9 @@ public class CanvasManager : MonoBehaviour
     public GameObject storeBtn;
     public GameObject endGamePanel;
     public GameObject score;
+    public GameObject headPanel;
+    public GameObject tailsPanel;
+    public GameObject goldShop;
     public TMP_Text scoreText;
     public TMP_Text totalGoldText;
     public TMP_Text endGameScoreText;
@@ -42,6 +45,7 @@ public class CanvasManager : MonoBehaviour
         storePanel.SetActive(false);
         endGamePanel.SetActive(false);
         score.SetActive(false);
+        goldShop.SetActive(false);
         storeOpen = false;
     }
 
@@ -59,15 +63,22 @@ public class CanvasManager : MonoBehaviour
     }
     public void startGame()
     {
+        SoundManager.instance.startMusic.Play();
+
         GameManager.instance.gamesStarted = true;
         score.SetActive(true);
         startBtn.SetActive(false);
         storeBtn.SetActive(false);
+        tailsPanel.SetActive(false);
+        headPanel.SetActive(false);
 
     }
 
     public void restartGame()
     {
+        SoundManager.instance.buttonClick.Play();
+
+
         SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().buildIndex);
         endGamePanel.SetActive(false);
         GameManager.instance.sessionGold = 0;
@@ -77,6 +88,7 @@ public class CanvasManager : MonoBehaviour
     {
         if (!GameManager.instance.gameOver)
         {
+            SoundManager.instance.buttonClick.Play();
             if (!storeOpen)
             {
                 startBtn.SetActive(false);
@@ -108,10 +120,39 @@ public class CanvasManager : MonoBehaviour
         }
     }
 
-    
+    public void headsPanelClick()
+    {
+        SoundManager.instance.buttonClick.Play();
 
+        tailsPanel.SetActive(false);
+        headPanel.SetActive(true);
+        goldShop.SetActive(false);
+
+    }
+
+    public void tailsPaneClickl()
+    {
+        SoundManager.instance.buttonClick.Play();
+
+        tailsPanel.SetActive(true);
+        headPanel.SetActive(false);
+        goldShop.SetActive(false);
+
+    }
+
+    public void goldShopPanel()
+    {
+        SoundManager.instance.buttonClick.Play();
+
+        goldShop.SetActive(true);
+        tailsPanel.SetActive(false);
+        headPanel.SetActive(false);
+    }
     public void endGame()
     {
+        SoundManager.instance.buttonClick.Play();
+
+
         if (GameManager.instance.gameOver)
         {
             if (storeOpen)

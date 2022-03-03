@@ -11,9 +11,9 @@ public class BirdScript : MonoBehaviour
     private float horizontalSpeed;
 
     private bool isLeft;
-    void Start()
+
+    private void Awake()
     {
-        Destroy(gameObject, 5);
         if(transform.position.x < 0)
         {
             isLeft = true;
@@ -22,6 +22,16 @@ public class BirdScript : MonoBehaviour
         {
             isLeft = false;
         }
+    }
+    void Start()
+    {
+        Destroy(gameObject, 10);
+        if (!isLeft)
+        {
+            transform.Rotate(new Vector3(0, 180, 0));
+        }
+
+        SoundManager.instance.birdWing.Play();
     }
 
     void Update()

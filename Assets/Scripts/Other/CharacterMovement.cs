@@ -61,11 +61,11 @@ public class CharacterMovement : MonoBehaviour
                 }
 
                 Touch screenTouch = Input.GetTouch(0);
-
+                
                 //TOUCH MOVING
                 if (screenTouch.phase == TouchPhase.Moved)
                 {
-                    transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.Euler(0f, screenTouch.deltaPosition.x, 0f), lerpTime * Time.deltaTime);
+                    //transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.Euler(0f, screenTouch.deltaPosition.x, 0f), lerpTime * Time.deltaTime);
 
                     transform.Translate(screenTouch.deltaPosition.x * verticalSpeed * Time.deltaTime, 0f, 0f, Space.World);
                     rb.velocity = new Vector3(screenTouch.deltaPosition.x * verticalSpeed * 0.8f, 0f, 0f);

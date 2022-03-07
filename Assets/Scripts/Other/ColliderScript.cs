@@ -73,6 +73,14 @@ public class ColliderScript : MonoBehaviour
             }
         }
 
+        if (collision.CompareTag("coin"))
+        {
+            GameManager.instance.sessionGold++;
+            collision.gameObject.GetComponent<SpriteRenderer>().enabled = false;
+            
+            SoundManager.instance.collectCoinSound();
+        }
+
 
         
 

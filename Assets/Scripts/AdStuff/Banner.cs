@@ -18,7 +18,7 @@ public class Banner : MonoBehaviour
         var adUnitId = AdManager.TestMode ? TestID : AdUnitID;
 
         bannerAd = new BannerView(adUnitId, AdSize.MediumRectangle, AdPosition.Bottom);
-        Debug.Log(adUnitId);
+        //Debug.Log(adUnitId);
         // Clean up banner ad before creating a new one.
         if (bannerAd != null)
         {

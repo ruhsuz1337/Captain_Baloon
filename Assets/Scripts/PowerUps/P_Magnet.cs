@@ -32,6 +32,8 @@ public class P_Magnet : MonoBehaviour
         }
 
 
+
+
     }
 
 }

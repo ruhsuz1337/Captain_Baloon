@@ -50,7 +50,8 @@ public class StoreController : MonoBehaviour
         {
             selectedBtn = buttonList[0];
         }
-        
+
+            GameManager.instance.playerSkinHat.sprite = selectedBtn.baloonHat;
             GameManager.instance.playerSkinBaloon.sprite = selectedBtn.baloonSkin;
             GameManager.instance.playerSkinTail.sprite = selectedBtn.baloonTail;
         
@@ -74,11 +75,25 @@ public class StoreController : MonoBehaviour
             if(buttonList[i].selected == true)
             {
                 PlayerPrefs.SetInt("selectedSkinIndex", i);
-                buttonList[i].btn.image.color = Color.blue;
+                buttonList[i].buyButtonText.text = "Equipped";
+                buttonList[i].buyButtonText.color = Color.white;
+                buttonList[i].btn.image.color = Color.red;
             }
             else
             {
-                buttonList[i].btn.image.color = Color.white;
+                if (PlayerPrefs.GetInt(buttonList[i].desiredText) == 0)
+                {
+                    PlayerPrefs.SetInt(buttonList[i].desiredText, 0);
+                    buttonList[i].btn.image.color = Color.yellow;
+                }
+                else
+                {
+                    PlayerPrefs.SetInt(buttonList[i].desiredText, 1);
+                    buttonList[i].buyButtonText.text = "Equip";
+                    buttonList[i].btn.image.color = Color.white;
+                }
+
+                
             }
         }
        

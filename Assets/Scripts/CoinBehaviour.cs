@@ -21,18 +21,18 @@ public class CoinBehaviour : MonoBehaviour
         //movement();
     
     }
-
+    /*
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Player"))
         {
             
             gameObject.GetComponent<SpriteRenderer>().enabled = false;
-            gameObject.GetComponent<Animator>().enabled = false;
+            //gameObject.GetComponent<Animator>().enabled = false;
             SoundManager.instance.collectCoinSound();
             GameManager.instance.sessionGold++;
         }
-    }
+    }*/
     /*
     private void spawnAtTop()
     {

@@ -63,7 +63,7 @@ public class P_Manager : MonoBehaviour
         {
             magnetActive = true;
             MMVibrationManager.Haptic(HapticTypes.MediumImpact);
-            collision.gameObject.GetComponent<SpriteRenderer>();
+            //collision.gameObject.GetComponent<SpriteRenderer>();
             P_Magnet.SetActive(true);
             StartCoroutine(countDown());
             

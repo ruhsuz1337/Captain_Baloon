@@ -13,9 +13,9 @@ public class CanvasManager : MonoBehaviour
     public GameObject storePanel;
     public GameObject storeBtn;
     public GameObject endGamePanel;
-    public GameObject score;
+    //public GameObject score;
     public GameObject headPanel;
-    public GameObject tailsPanel;
+    //public GameObject tailsPanel;
     public GameObject goldShop;
     public TMP_Text scoreText;
     public TMP_Text totalGoldText;
@@ -44,7 +44,7 @@ public class CanvasManager : MonoBehaviour
         storeBtn.SetActive(true);
         storePanel.SetActive(false);
         endGamePanel.SetActive(false);
-        score.SetActive(false);
+        //score.SetActive(false);
         goldShop.SetActive(false);
         storeOpen = false;
     }
@@ -59,17 +59,17 @@ public class CanvasManager : MonoBehaviour
     public void setScoreText()
     {
         scoreText.text = "Score: " + GameManager.instance.sessionGold;
-        totalGoldText.text = "Total Gold: " + GameManager.instance.totalGold;
+        totalGoldText.text = "" + GameManager.instance.totalGold;
     }
     public void startGame()
     {
         
 
         GameManager.instance.gamesStarted = true;
-        score.SetActive(true);
+        //score.SetActive(true);
         startBtn.SetActive(false);
         storeBtn.SetActive(false);
-        tailsPanel.SetActive(false);
+        //tailsPanel.SetActive(false);
         headPanel.SetActive(false);
 
     }
@@ -121,7 +121,7 @@ public class CanvasManager : MonoBehaviour
     public void headsPanelClick()
     {
 
-        tailsPanel.SetActive(false);
+        //tailsPanel.SetActive(false);
         headPanel.SetActive(true);
         goldShop.SetActive(false);
 
@@ -130,7 +130,7 @@ public class CanvasManager : MonoBehaviour
     public void tailsPaneClickl()
     {
 
-        tailsPanel.SetActive(true);
+        //tailsPanel.SetActive(true);
         headPanel.SetActive(false);
         goldShop.SetActive(false);
 
@@ -140,7 +140,7 @@ public class CanvasManager : MonoBehaviour
     {
 
         goldShop.SetActive(true);
-        tailsPanel.SetActive(false);
+        //tailsPanel.SetActive(false);
         headPanel.SetActive(false);
     }
     public void endGame()
@@ -161,11 +161,23 @@ public class CanvasManager : MonoBehaviour
             }
             endGameScoreText.text = scoreText.text;
             storeBtn.SetActive(true);
-            score.SetActive(false);
+            //score.SetActive(false);
             
 
            
 
+        }
+    }
+
+    public void closeButton()
+    {
+        if (endGamePanel.activeInHierarchy)
+        {
+            startBtn.SetActive(false);
+        }
+        else
+        {
+            startBtn.SetActive(true);
         }
     }
 }

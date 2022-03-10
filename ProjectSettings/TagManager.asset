@@ -8,6 +8,9 @@ TagManager:
   - coin
   - Pmagnet
   - bird
+  - stage
+  - lucky
+  - spawnCounter
   layers:
   - Default
   - TransparentFX

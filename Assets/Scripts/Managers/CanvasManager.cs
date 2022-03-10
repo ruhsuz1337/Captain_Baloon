@@ -13,6 +13,7 @@ public class CanvasManager : MonoBehaviour
     public GameObject storePanel;
     public GameObject storeBtn;
     public GameObject endGamePanel;
+    public GameObject startMenu;
     //public GameObject score;
     public GameObject headPanel;
     //public GameObject tailsPanel;
@@ -20,6 +21,7 @@ public class CanvasManager : MonoBehaviour
     public TMP_Text scoreText;
     public TMP_Text totalGoldText;
     public TMP_Text endGameScoreText;
+    
     private bool storeOpen;
 
 
@@ -40,8 +42,9 @@ public class CanvasManager : MonoBehaviour
 
     void Start()
     {
-        startBtn.SetActive(true);
-        storeBtn.SetActive(true);
+        startMenu.SetActive(true);
+        //startBtn.SetActive(true);
+        //storeBtn.SetActive(true);
         storePanel.SetActive(false);
         endGamePanel.SetActive(false);
         //score.SetActive(false);
@@ -66,9 +69,11 @@ public class CanvasManager : MonoBehaviour
         
 
         GameManager.instance.gamesStarted = true;
+        startMenu.SetActive(true);
+        endGamePanel.SetActive(false);
         //score.SetActive(true);
-        startBtn.SetActive(false);
-        storeBtn.SetActive(false);
+        //startBtn.SetActive(false);
+        //storeBtn.SetActive(false);
         //tailsPanel.SetActive(false);
         headPanel.SetActive(false);
 
@@ -81,6 +86,8 @@ public class CanvasManager : MonoBehaviour
         SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().buildIndex);
         endGamePanel.SetActive(false);
         GameManager.instance.sessionGold = 0;
+        SoundManager.instance.buttonClicker();
+
     }
 
     public void storeButton()
@@ -89,13 +96,13 @@ public class CanvasManager : MonoBehaviour
         {
             if (!storeOpen)
             {
-                startBtn.SetActive(false);
+                startMenu.SetActive(false);
                 storePanel.SetActive(true);
                 storeOpen = true;
             }
             else
             {
-                startBtn.SetActive(true);
+                startMenu.SetActive(true);
                 storePanel.SetActive(false);
                 storeOpen = false;
             }
@@ -120,7 +127,7 @@ public class CanvasManager : MonoBehaviour
 
     public void headsPanelClick()
     {
-
+        SoundManager.instance.buttonClicker();
         //tailsPanel.SetActive(false);
         headPanel.SetActive(true);
         goldShop.SetActive(false);
@@ -138,6 +145,7 @@ public class CanvasManager : MonoBehaviour
 
     public void goldShopPanel()
     {
+        SoundManager.instance.buttonClicker();
 
         goldShop.SetActive(true);
         //tailsPanel.SetActive(false);
@@ -160,7 +168,7 @@ public class CanvasManager : MonoBehaviour
                 endGamePanel.SetActive(true);
             }
             endGameScoreText.text = scoreText.text;
-            storeBtn.SetActive(true);
+            endGamePanel.SetActive(true);
             //score.SetActive(false);
             
 
@@ -173,11 +181,22 @@ public class CanvasManager : MonoBehaviour
     {
         if (endGamePanel.activeInHierarchy)
         {
-            startBtn.SetActive(false);
+            startMenu.SetActive(false);
+            storePanel.SetActive(false);
+            endGamePanel.SetActive(true);
+            SoundManager.instance.buttonClicker();
+
         }
         else
         {
-            startBtn.SetActive(true);
+
+            
+            startMenu.SetActive(true);
+            storePanel.SetActive(false);
+            endGamePanel.SetActive(false);
+            SoundManager.instance.buttonClicker();
+
+
         }
     }
 }

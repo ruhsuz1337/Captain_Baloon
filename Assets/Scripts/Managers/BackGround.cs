@@ -22,7 +22,7 @@ public class BackGround : MonoBehaviour
 
     public float desiredMagnetSpawnRate;
 
-
+    /*
     void Start()
     {
         
@@ -122,5 +122,5 @@ public class BackGround : MonoBehaviour
     }
     
 
-   
+   */
 }

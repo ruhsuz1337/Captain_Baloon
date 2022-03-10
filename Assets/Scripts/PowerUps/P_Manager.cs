@@ -59,18 +59,10 @@ public class P_Manager : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("Pmagnet"))
-        {
-            magnetActive = true;
-            MMVibrationManager.Haptic(HapticTypes.MediumImpact);
-            //collision.gameObject.GetComponent<SpriteRenderer>();
-            P_Magnet.SetActive(true);
-            StartCoroutine(countDown());
-            
-        }
+        
     }
 
-    private IEnumerator countDown()
+    public IEnumerator countDown()
     {
         float currentT = 0;
         while (currentT < magnetTime)

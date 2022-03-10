@@ -80,12 +80,13 @@ public class StoreButton : MonoBehaviour
 
     public void onClick()
     {
-        //SoundManager.instance.buttonClicker();
+        SoundManager.instance.buttonClicker();
         
             if (PlayerPrefs.GetInt(desiredText) == 0)
             {
                 if (GameManager.instance.totalGold >= price)
                 {
+
                     GameManager.instance.playerSkinBaloon.sprite = baloonSkin;
                     GameManager.instance.playerSkinHat.sprite = baloonHat;
                     GameManager.instance.playerSkinTail.sprite = baloonTail;

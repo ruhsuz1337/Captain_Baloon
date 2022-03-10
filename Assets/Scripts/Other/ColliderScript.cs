@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
+using MoreMountains.NiceVibrations;
 
 public class ColliderScript : MonoBehaviour
 {
@@ -77,16 +78,25 @@ public class ColliderScript : MonoBehaviour
         {
             GameManager.instance.sessionGold++;
             collision.gameObject.GetComponent<SpriteRenderer>().enabled = false;
-            
+            MMVibrationManager.Haptic(HapticTypes.LightImpact);
             SoundManager.instance.collectCoinSound();
         }
 
+        if (collision.CompareTag("Pmagnet"))
+        {
+            collision.gameObject.GetComponent<SpriteRenderer>().enabled = false;
+            P_Manager.instance.magnetActive = true;
+            MMVibrationManager.Haptic(HapticTypes.MediumImpact);
+            //collision.gameObject.GetComponent<SpriteRenderer>();
+            P_Manager.instance.P_Magnet.SetActive(true);
+            StartCoroutine(P_Manager.instance.countDown());
 
-        
-
-        
+        }
 
 
-        
+
+
+
+
     }
 }

@@ -10,25 +10,25 @@ public class BackgroundManager : MonoBehaviour
     private GameObject background;
 
     [SerializeField]
-    private int treshold1 = 50;
+    private int desiredChange;
+
+
+
+    private Vector3 startPos;
+    private Vector3 endPos;
 
     [SerializeField]
-    private int treshold2 = 100;
+    private List<GameObject> backgroundList;
 
-    
-
-    [SerializeField]
-    private List<GameObject> sides;
-
-    
-
-
-
-
-
-    private void Start()
+    void Start()
     {
-        
+        endPos = backgroundList[0].transform.position;
+        startPos = backgroundList[1].transform.position;
+
+
+
+
+
     }
 
     private void Update()
@@ -37,20 +37,44 @@ public class BackgroundManager : MonoBehaviour
         changeBackground();
     }
 
+    private void slide(int x, int y)
+    {
+        if (GameManager.instance.sessionGold % desiredChange == 0)
+        {
+            backgroundList[x].transform.DOMove(endPos, 2);
+            
+            }
+    }
+    
 
     private void changeBackground()
     {
         
-        if (GameManager.instance.sessionGold >= treshold1)
+        if (GameManager.instance.sessionGold == 15)
         {
-            background.transform.DOMoveY(-18f, 2);
-            
+            background.transform.DOMoveY(-67f, 2);            
 
-        }else if (GameManager.instance.sessionGold >= treshold2)
+        }else if (GameManager.instance.sessionGold == 30)
         {
-            background.transform.DOMoveY(-36f, 2);
+            background.transform.DOMoveY(-124f, 2);
         }
-        
+        else if (GameManager.instance.sessionGold == 45)
+        {
+            background.transform.DOMoveY(-181f, 2);
+        }
+        else if (GameManager.instance.sessionGold == 60)
+        {
+            background.transform.DOMoveY(-238f, 2);
+        }
+        else if (GameManager.instance.sessionGold == 75)
+        {
+            background.transform.DOMoveY(-295f, 2);
+        }
+        else if (GameManager.instance.sessionGold == 90)
+        {
+            background.transform.DOMoveY(-352f, 2);
+        }
+
     }
     
     private void loopSides()

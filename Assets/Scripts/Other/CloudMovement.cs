@@ -5,7 +5,7 @@ using UnityEngine;
 public class CloudMovement : MonoBehaviour
 {
     public float speed;
-    public GameObject spawner;
+    //public GameObject spawner;
 
 
     void Start()
@@ -30,7 +30,7 @@ public class CloudMovement : MonoBehaviour
 
         if (transform.position.x < -10)
         {
-            transform.position = new Vector3(10f, 0, -1);
+            transform.position = new Vector3(10f, 0, 1);
         }
         if (GameManager.instance.gameOver)
         {

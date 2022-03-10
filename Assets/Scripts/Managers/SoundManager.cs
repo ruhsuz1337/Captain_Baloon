@@ -21,7 +21,9 @@ public class SoundManager : MonoBehaviour
     public AudioClip birdWing;
     public AudioClip birdHit;
     public AudioClip branchCrash;
-    public AudioClip skinPurchase;
+    public AudioClip skinPurchase1;
+    public AudioClip skinPurchase2;
+
     public AudioClip invincibleCrash;
 
 
@@ -67,6 +69,17 @@ public class SoundManager : MonoBehaviour
     public void playBirdFlying()
     {
         soundPlayer.PlayOneShot(birdWing);
+    }
+
+    public void playSkinPurchase()
+    {
+        soundPlayer.PlayOneShot(skinPurchase1);
+    }
+
+    public void playEquipSkin()
+    {
+        soundPlayer.PlayOneShot(skinPurchase2);
+
     }
     void Update()
     {

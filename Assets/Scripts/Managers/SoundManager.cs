@@ -58,7 +58,7 @@ public class SoundManager : MonoBehaviour
     }
     public void playDeathSound()
     {
-
+        soundPlayer.PlayOneShot(baloonBoom);
     }
 
     public void playBirdHit()
@@ -73,7 +73,16 @@ public class SoundManager : MonoBehaviour
 
     public void playSkinPurchase()
     {
-        soundPlayer.PlayOneShot(skinPurchase1);
+        int x = Random.Range(0, 2);
+        if (x == 0)
+        {
+            soundPlayer.PlayOneShot(skinPurchase1);
+        }
+        else
+        {
+            soundPlayer.PlayOneShot(skinPurchase2);
+        }
+        
     }
 
     public void playEquipSkin()

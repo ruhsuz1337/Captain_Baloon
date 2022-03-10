@@ -77,9 +77,12 @@ public class ColliderScript : MonoBehaviour
         if (collision.CompareTag("coin"))
         {
             GameManager.instance.sessionGold++;
-            collision.gameObject.GetComponent<SpriteRenderer>().enabled = false;
+            /*collision.gameObject.GetComponent<SpriteRenderer>().enabled = false;
+            collision.gameObject.GetComponent<BoxCollider2D>().enabled = false;*/
+            
             MMVibrationManager.Haptic(HapticTypes.LightImpact);
             SoundManager.instance.collectCoinSound();
+            collision.gameObject.SetActive(false);
         }
 
         if (collision.CompareTag("Pmagnet"))

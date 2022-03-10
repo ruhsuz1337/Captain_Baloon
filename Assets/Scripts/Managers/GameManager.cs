@@ -16,6 +16,9 @@ public class GameManager : MonoBehaviour
     public int sessionGold;
     public int totalGold;
 
+    public float highScoreHeight;
+    public float sessionHeight;
+
     public SpriteRenderer playerSkinBaloon;
     public SpriteRenderer playerSkinHat;
     public SpriteRenderer playerSkinTail;
@@ -48,13 +51,31 @@ public class GameManager : MonoBehaviour
         StoreController.instance.getSelectedSkin();
 
         totalGold = PlayerPrefs.GetInt("totalGold");
+        //highScoreHeight = PlayerPrefs.GetInt("highscore");
 
     }
-    
 
+    private void Update()
+    {
+        calculateHighScore();
+    }
     private void FixedUpdate()
     {
         gameStatus();
+    }
+
+    private void calculateHighScore()
+    {
+        if (!gameOver && gamesStarted)
+        {
+            sessionHeight += Time.deltaTime * 25f;
+        }
+        if (sessionHeight > PlayerPrefs.GetFloat("highscore"))
+        {
+            PlayerPrefs.SetFloat("highscore", sessionHeight);
+        }
+        
+        
     }
 
     private void gameStatus()

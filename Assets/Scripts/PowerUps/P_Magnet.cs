@@ -21,7 +21,7 @@ public class P_Magnet : MonoBehaviour
     {
         if (collision.CompareTag("coin"))
         {
-            collision.gameObject.transform.DOMove(GameManager.instance.transform.position, .35f);              
+            collision.gameObject.transform.DOMove(transform.position, .2f);              
             
         }
 

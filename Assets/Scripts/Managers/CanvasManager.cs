@@ -17,10 +17,12 @@ public class CanvasManager : MonoBehaviour
     //public GameObject score;
     public GameObject headPanel;
     //public GameObject tailsPanel;
-    public GameObject goldShop;
+    //public GameObject goldShop;
     public TMP_Text scoreText;
     public TMP_Text totalGoldText;
     public TMP_Text endGameScoreText;
+    public TMP_Text highScoreText;
+    public Image highScoreImage;
     
     private bool storeOpen;
 
@@ -48,7 +50,7 @@ public class CanvasManager : MonoBehaviour
         storePanel.SetActive(false);
         endGamePanel.SetActive(false);
         //score.SetActive(false);
-        goldShop.SetActive(false);
+        //goldShop.SetActive(false);
         storeOpen = false;
     }
 
@@ -56,14 +58,32 @@ public class CanvasManager : MonoBehaviour
     void Update()
     {
         setScoreText();
+        
     }
 
 
     public void setScoreText()
     {
-        scoreText.text = "Score: " + GameManager.instance.sessionGold;
+        scoreText.text = "" + GameManager.instance.sessionGold;
         totalGoldText.text = "" + GameManager.instance.totalGold;
+
+        if(PlayerPrefs.GetFloat("highscore") < GameManager.instance.sessionHeight)
+        {
+            Debug.Log("true");
+            highScoreImage.enabled = true;
+            highScoreText.text = PlayerPrefs.GetFloat("highscore") + "ft.";
+        }
+        else
+        {
+            Debug.Log("false");
+
+            highScoreImage.enabled = false;
+            highScoreText.text = GameManager.instance.sessionHeight + "ft.";
+        }
+        
     }
+
+
     public void startGame()
     {
         
@@ -130,7 +150,7 @@ public class CanvasManager : MonoBehaviour
         SoundManager.instance.buttonClicker();
         //tailsPanel.SetActive(false);
         headPanel.SetActive(true);
-        goldShop.SetActive(false);
+        //goldShop.SetActive(false);
 
     }
 
@@ -139,7 +159,7 @@ public class CanvasManager : MonoBehaviour
 
         //tailsPanel.SetActive(true);
         headPanel.SetActive(false);
-        goldShop.SetActive(false);
+        //goldShop.SetActive(false);
 
     }
 
@@ -147,7 +167,7 @@ public class CanvasManager : MonoBehaviour
     {
         SoundManager.instance.buttonClicker();
 
-        goldShop.SetActive(true);
+        //goldShop.SetActive(true);
         //tailsPanel.SetActive(false);
         headPanel.SetActive(false);
     }

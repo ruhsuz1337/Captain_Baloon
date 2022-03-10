@@ -10,9 +10,7 @@ public class Scaler : MonoBehaviour
 
     private float cuberootvalue;
 
-    private CapsuleCollider2D circleCol;
 
-    private Vector2 capsuleSize;
 
     private void Awake()
     {
@@ -23,7 +21,6 @@ public class Scaler : MonoBehaviour
     {
         //transform.localScale = new Vector3(1, 3, 3);
         timerValue = 1;
-        circleCol = GetComponent<CapsuleCollider2D>();
     }
 
     // Update is called once per frame

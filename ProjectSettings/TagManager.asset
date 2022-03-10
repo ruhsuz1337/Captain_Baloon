@@ -11,6 +11,7 @@ TagManager:
   - stage
   - lucky
   - spawnCounter
+  - magnet
   layers:
   - Default
   - TransparentFX

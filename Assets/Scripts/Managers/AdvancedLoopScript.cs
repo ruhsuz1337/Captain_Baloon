@@ -17,6 +17,7 @@ public class AdvancedLoopScript : MonoBehaviour
     public Vector3 offset;
     [SerializeField]
     private List<GameObject> stageList;
+    [SerializeField]
     private List<GameObject> luckyRushList;
 
     [SerializeField]
@@ -28,6 +29,8 @@ public class AdvancedLoopScript : MonoBehaviour
     private List<GameObject> spawnedStages2;
 
     private List<GameObject> spawnedStagesBool;
+
+    public List<GameObject> magnets;
 
     private int totalStages;
     public int stageCounter;
@@ -56,17 +59,41 @@ public class AdvancedLoopScript : MonoBehaviour
         spawnedStages1 = new List<GameObject>();
         spawnedStages2 = new List<GameObject>();
         luckyRushList = new List<GameObject>();
+        magnets = new List<GameObject>();
         allStages = new List<GameObject>();
         desiredSpeed = movementSpeed;
         offset = startPos.position - endPos.position;
         totalStages = stageList.Count + luckyRushList.Count;
+        
+        
         //otherSpawnsVec = startGameVec + offset;
         getAllStages();
-        
-        stageCounter = 0;
+
         spawnFirstSet(startGameVec);
+        stageCounter = 0;
+        getAllMagnetTransforms(spawnedStages1);
+        getAllMagnetTransforms(spawnedStages2);
+        
     }
 
+
+    private void getAllMagnetTransforms(List<GameObject> list)
+    {
+        for (int i = 0; i < transform.childCount; i++)
+        {
+            if(transform.GetChild(i).GetComponent<StageMagnet>() != null)
+            {
+                for (int h = 0; h < transform.GetChild(i).GetComponent<StageMagnet>().magnetList.Count; h++)
+                {
+                    magnets.Add(transform.GetChild(i).GetComponent<StageMagnet>().magnetList[h].gameObject);
+                }
+            }
+        }
+        setMagnets();                
+    }
+
+
+    
     private void Update()
     {
 
@@ -89,29 +116,26 @@ public class AdvancedLoopScript : MonoBehaviour
             movementSpeed = 0;
         }
     }
+    private void setMagnets()
+    {
+        for (int i = 0; i < magnets.Count; i++)
+        {
+            magnets[i].gameObject.SetActive(false);
+        }
 
+        int x = Random.Range(0, magnets.Count );
+        magnets[x].gameObject.SetActive(true);
+    }
     private void getAllStages()
     {
 
-         
-
-        
-
-
         for (int i = 0; i < totalStages; i++)
         {
-            int rndStage = Random.Range(0, stageList.Count);
-            int rndRush = Random.Range(0, luckyRushList.Count);
-            /*
-            if (i % 2 == 0 && i != 0 && luckyRushList.Count != 0)
-            {
-                //allStages.Add(luckyRushList[rndRush].gameObject);
-            }
-            else*/
+                      
             
-                allStages.Add(stageList[rndStage].gameObject);
+                allStages.Add(stageList[i].gameObject);
             
-
+        
         }
     }
 
@@ -128,7 +152,9 @@ public class AdvancedLoopScript : MonoBehaviour
     {
         for (int i = 0; i < allStages.Count; i++)
         {
-            spawnedStages1.Add(Instantiate(allStages[i], vec, Quaternion.identity));
+            GameObject obj = Instantiate(allStages[i], vec, Quaternion.identity);
+            spawnedStages1.Add(obj);
+            obj.transform.SetParent(gameObject.transform);
             vec += offset;
         }
         spawnSecondSet(vec);
@@ -138,14 +164,16 @@ public class AdvancedLoopScript : MonoBehaviour
     {
         for(int i = 0; i < allStages.Count; i++)
         {
-            spawnedStages2.Add(Instantiate(allStages[i], vec, Quaternion.identity));
+            GameObject obj = Instantiate(allStages[i], vec, Quaternion.identity);
+            spawnedStages2.Add(obj);
+            obj.transform.SetParent(gameObject.transform);
             vec += offset;
         }
     }
 
     private List<GameObject> shuffleSet(List<GameObject> list)
     {
-        for (int i = 0; i < list.Count; i++)
+        for (int i = 0; i < list.Count-1; i++)
         {
             GameObject temp = list[i];
             int rnd = Random.Range(i, list.Count);

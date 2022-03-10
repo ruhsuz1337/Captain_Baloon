@@ -9,7 +9,7 @@ public class CharacterMovement : MonoBehaviour
 
     private float verticalSpeed;
     public float lerpTime = 10f;
-
+    public GameObject player;
     private float defaultVerticalSpeed;
 
     

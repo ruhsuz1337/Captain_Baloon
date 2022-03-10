@@ -48,7 +48,7 @@ public class AdvancedBackgroundManager : MonoBehaviour
         {
             if(backgroundList[i].transform.position.y <= endPos.position.y)
             {
-                backgroundList[i].transform.position = spawnPos.position;
+                backgroundList[i].transform.position = spawnPos.position - new Vector3(0, 2f, 0) - AdvancedLoopScript.instance.offset ;
             }
         }
     }

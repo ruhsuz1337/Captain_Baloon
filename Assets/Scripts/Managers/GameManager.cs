@@ -19,9 +19,16 @@ public class GameManager : MonoBehaviour
     public float highScoreHeight;
     public float sessionHeight;
 
+    public int desiredRestartCount;
+    public int restartCount;
+
+    public Interstitial interstitial;
+     
     public SpriteRenderer playerSkinBaloon;
     public SpriteRenderer playerSkinHat;
     public SpriteRenderer playerSkinTail;
+
+    private int tmpSessiongold;
 
     private void Awake()
     {
@@ -42,11 +49,11 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         //
-        
+        //restartCount = 0;
         gamesStarted = false;
         gameOver = false;
         sessionGold = 0;
-
+        restartCount = PlayerPrefs.GetInt("highScore");
         currentVerticalSpeed = desiredVerticalSpeed;
         StoreController.instance.getSelectedSkin();
 
@@ -58,7 +65,24 @@ public class GameManager : MonoBehaviour
     private void Update()
     {
         calculateHighScore();
+
+        if (!gameOver)
+        {
+            tmpSessiongold = sessionGold;
+        }
+
+        //Debug.Log(tmpSessiongold);
         
+    }
+
+    public void popUpAd()
+    {
+        if(PlayerPrefs.GetInt("restartCount") % desiredRestartCount == 0 && PlayerPrefs.GetInt("restartCount") != 0)
+        {
+            Debug.Log("akdhasldasd");
+            interstitial.showads();
+            PlayerPrefs.SetInt("restartCount", 0);
+        }
     }
     private void FixedUpdate()
     {
@@ -80,6 +104,7 @@ public class GameManager : MonoBehaviour
     {
         if (gamesStarted && gameOver)
         {
+            SoundManager.instance.playDeathSound();
             currentVerticalSpeed = 0;
             backgroundSpeed = 0;
             CanvasManager.instance.endGame();
@@ -96,6 +121,14 @@ public class GameManager : MonoBehaviour
             currentVerticalSpeed = desiredVerticalSpeed;
             backgroundSpeed = 4f;
         }
+    }
+
+
+    public void AdWatched()
+    {
+        totalGold += tmpSessiongold * 2;
+
+
     }
 
     

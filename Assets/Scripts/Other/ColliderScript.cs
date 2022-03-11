@@ -36,6 +36,7 @@ public class ColliderScript : MonoBehaviour
             }else if (!P_Manager.instance.invincibility)
             {
 
+                SoundManager.instance.playBranchCrash();
                 GameManager.instance.gameOver = true;
                 GameManager.instance.totalGold += GameManager.instance.sessionGold;
 
@@ -81,7 +82,7 @@ public class ColliderScript : MonoBehaviour
             collision.gameObject.GetComponent<BoxCollider2D>().enabled = false;*/
             
             MMVibrationManager.Haptic(HapticTypes.LightImpact);
-            SoundManager.instance.collectCoinSound();
+            SoundManager.instance.playCollectCoinSound();
             collision.gameObject.SetActive(false);
         }
 

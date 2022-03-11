@@ -66,7 +66,7 @@ public class CanvasManager : MonoBehaviour
     {
         scoreText.text = "" + GameManager.instance.sessionGold;
         totalGoldText.text = "" + GameManager.instance.totalGold;          
-        highScoreText.text = GameManager.instance.sessionHeight + "ft.";
+        highScoreText.text = (int)(GameManager.instance.sessionHeight) + "ft.";
         
         
     }
@@ -90,11 +90,14 @@ public class CanvasManager : MonoBehaviour
     public void restartGame()
     {
 
-
+        
         SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().buildIndex);
         endGamePanel.SetActive(false);
         GameManager.instance.sessionGold = 0;
         SoundManager.instance.buttonClicker();
+        PlayerPrefs.SetInt("restartCount", PlayerPrefs.GetInt("restartCount") + 1);
+        GameManager.instance.popUpAd();
+        Debug.Log(PlayerPrefs.GetInt("restartCount"));
 
     }
 
@@ -174,7 +177,7 @@ public class CanvasManager : MonoBehaviour
         setScoreText();
 
         if (GameManager.instance.gameOver)
-        {
+        {/*
             if (storeOpen)
             {
                 endGamePanel.SetActive(false);
@@ -182,7 +185,7 @@ public class CanvasManager : MonoBehaviour
             else
             {
                 endGamePanel.SetActive(true);
-            }
+            }*/
             //endGameScoreText.text = scoreText.text;
             endGamePanel.SetActive(true);
             //score.SetActive(false);

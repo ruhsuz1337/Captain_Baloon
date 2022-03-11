@@ -42,9 +42,9 @@ public class SoundManager : MonoBehaviour
     }
 
 
-    void Start()
+    public void playBranchCrash()
     {
-        
+        soundPlayer.PlayOneShot(branchCrash);
     }
 
     public void buttonClicker()
@@ -52,7 +52,7 @@ public class SoundManager : MonoBehaviour
         soundPlayer.PlayOneShot(buttonClick);
     }
 
-    public void collectCoinSound()
+    public void playCollectCoinSound()
     {
         soundPlayer.PlayOneShot(coinCollect);
     }

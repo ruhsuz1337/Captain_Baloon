@@ -41,6 +41,6 @@ public class Interstitial : MonoBehaviour
     public void showads()
     {
         StartCoroutine(ShowInterstitial());
-        Debug.Log("meow");
+        //Debug.Log("meow");
     }
 }

@@ -25,6 +25,8 @@ public class BirdSpawner : MonoBehaviour
     void Start()
     {
         StartCoroutine(countdown());
+       // minTime = (AdvancedLoopScript.instance.spawnedStages1.Count - 1) * 15;
+        //maxTime = minTime + 15;
     }
 
     // Update is called once per frame

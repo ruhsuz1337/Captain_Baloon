@@ -24,7 +24,7 @@ public class AdvancedLoopScript : MonoBehaviour
     private List<GameObject> allStages;
 
     [SerializeField]
-    private List<GameObject> spawnedStages1;
+    public List<GameObject> spawnedStages1;
     [SerializeField]
     private List<GameObject> spawnedStages2;
 

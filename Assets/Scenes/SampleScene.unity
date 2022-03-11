@@ -332,8 +332,7 @@ MonoBehaviour:
   storeBtn: {fileID: 0}
   endGamePanel: {fileID: 45046293}
   startMenu: {fileID: 366951502}
-  headPanel: {fileID: 0}
-  goldShop: {fileID: 0}
+  headPanel: {fileID: 423453003}
   scoreText: {fileID: 1950728681}
   totalGoldText: {fileID: 231248006}
   endGameScoreText: {fileID: 1750913411}

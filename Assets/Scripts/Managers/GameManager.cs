@@ -58,6 +58,7 @@ public class GameManager : MonoBehaviour
     private void Update()
     {
         calculateHighScore();
+        
     }
     private void FixedUpdate()
     {
@@ -70,10 +71,7 @@ public class GameManager : MonoBehaviour
         {
             sessionHeight += Time.deltaTime * 25f;
         }
-        if (sessionHeight > PlayerPrefs.GetFloat("highscore"))
-        {
-            PlayerPrefs.SetFloat("highscore", sessionHeight);
-        }
+        
         
         
     }

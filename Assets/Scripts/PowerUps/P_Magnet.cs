@@ -6,7 +6,7 @@ using DG.Tweening;
 public class P_Magnet : MonoBehaviour
 {
 
-
+    public GameObject player;
     
     // Update is called once per frame
     void Update()
@@ -21,7 +21,7 @@ public class P_Magnet : MonoBehaviour
     {
         if (collision.CompareTag("coin"))
         {
-            collision.gameObject.transform.DOMove(transform.position, .2f);              
+            collision.gameObject.transform.DOMove(player.transform.position, .2f);              
             
         }
 

@@ -2835,7 +2835,7 @@ PolygonCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1044596214}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 1
@@ -4181,7 +4181,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 740698917047108709, guid: 2f7ddc433ab614e40becb2ee8f02b68a, type: 3}
       propertyPath: movementSpeed
-      value: 4
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 740698917047108709, guid: 2f7ddc433ab614e40becb2ee8f02b68a, type: 3}
+      propertyPath: desiredLevelCount
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 740698917047108709, guid: 2f7ddc433ab614e40becb2ee8f02b68a, type: 3}
       propertyPath: stageList.Array.size
@@ -4220,9 +4224,33 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 2617324078277367776, guid: cf35e91228885c547a231a4e96fbdabc, type: 3}
     - target: {fileID: 740698917047108709, guid: 2f7ddc433ab614e40becb2ee8f02b68a, type: 3}
+      propertyPath: allLevelsList.Array.size
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 740698917047108709, guid: 2f7ddc433ab614e40becb2ee8f02b68a, type: 3}
       propertyPath: luckyRushList.Array.size
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 740698917047108709, guid: 2f7ddc433ab614e40becb2ee8f02b68a, type: 3}
+      propertyPath: allLevelsList.Array.data[0]
+      value: 
+      objectReference: {fileID: 4124016082811448221, guid: ad4afc673b2270f41aed6e711de91530, type: 3}
+    - target: {fileID: 740698917047108709, guid: 2f7ddc433ab614e40becb2ee8f02b68a, type: 3}
+      propertyPath: allLevelsList.Array.data[1]
+      value: 
+      objectReference: {fileID: 2617324078277367776, guid: 7b5dbc5fde091bf4c897af258b81653d, type: 3}
+    - target: {fileID: 740698917047108709, guid: 2f7ddc433ab614e40becb2ee8f02b68a, type: 3}
+      propertyPath: allLevelsList.Array.data[2]
+      value: 
+      objectReference: {fileID: 2617324078277367776, guid: 50b567499d1911444985652e7dbf182a, type: 3}
+    - target: {fileID: 740698917047108709, guid: 2f7ddc433ab614e40becb2ee8f02b68a, type: 3}
+      propertyPath: allLevelsList.Array.data[3]
+      value: 
+      objectReference: {fileID: 2617324078277367776, guid: ca70202cd5007ee41b101a5e9309bde6, type: 3}
+    - target: {fileID: 740698917047108709, guid: 2f7ddc433ab614e40becb2ee8f02b68a, type: 3}
+      propertyPath: allLevelsList.Array.data[4]
+      value: 
+      objectReference: {fileID: 2617324078277367776, guid: 63e32b303923ed04f9d558227a812064, type: 3}
     - target: {fileID: 740698917047108709, guid: 2f7ddc433ab614e40becb2ee8f02b68a, type: 3}
       propertyPath: luckyRushList.Array.data[0]
       value: 

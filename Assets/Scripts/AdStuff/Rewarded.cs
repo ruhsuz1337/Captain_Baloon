@@ -24,7 +24,6 @@ public class Rewarded : MonoBehaviour
         rewardBasedVideo.OnAdClosed += HandleRewardBasedVideoClosed;
 
         RequestAD();
-
         
     }
 

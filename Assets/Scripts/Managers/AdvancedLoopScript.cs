@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AdvancedLoopScript : MonoBehaviour
+public class AdvancedLoopScript : B_PoolerBase
 {
     public static AdvancedLoopScript instance;
 
@@ -18,14 +18,19 @@ public class AdvancedLoopScript : MonoBehaviour
     public Vector3 spawnerPoint;
     public int desiredLevelCount;
 
-    public List<GameObject> allLevelsList;
-
     [SerializeField]
-    private List<GameObject> spawnedLevels1;
-    [SerializeField]
-    private List<GameObject> spawnedLevels2;
+    private List<GameObject> allMagnets;
+
+    Transform lastSpawnedTransform;
+    string lastSpawnedStageName = "";
 
 
+    string GetRandomStageName()
+    {
+        string x = PoolsList[Random.Range(0, PoolsList.Count - 1)].PoolName;
+        if (x == lastSpawnedStageName) return GetRandomStageName();
+        return x;
+    }
 
     private void Awake()
     {
@@ -42,84 +47,57 @@ public class AdvancedLoopScript : MonoBehaviour
 
     private void Start()
     {
+        InitiatePooller(transform);
         desiredSpeed = movementSpeed;
-        offset = startPos.position - endPos.position;
-        spawnerPoint = new Vector3(100, 0, -2);
+        //offset = startPos.position - endPos.position;
+        spawnerPoint = new Vector3(0, 15, 0);
 
-        spawnedLevels1 = new List<GameObject>();
 
         spawnAllStages();
-        setLevel(spawnedLevels1);
-        setPositions(spawnedLevels1);
+
+        GetAllMagnets();
+        SetActiveMagnet();
+
     }
 
     private void Update()
     {
-        setMovementSpeed();
-        reSpawnTile(spawnedLevels1);
+        SetMovementSpeed();
+        RespawnTile();
     }
 
     private void spawnAllStages()
     {
-        Vector3 vec = new Vector3(100, 0, -2);
+        Vector3 vec = new Vector3(0, 0, 0);
 
-        for (int i = 0; i < allLevelsList.Count; i++)
+
+        for (int i = 0; i < PoolsList.Count; i++)
         {
-            GameObject obj = Instantiate(allLevelsList[i], vec, Quaternion.identity);
-            allLevelsList[i] = obj;
+            GameObject obj = SpawnObjFromPool(GetRandomStageName(), vec);
+            vec.y += offset.y ;
+            obj.transform.parent = transform;
+            if (i == PoolsList.Count - 1)
+            {
+                lastSpawnedTransform = obj.transform;
+                lastSpawnedStageName = PoolsList[i].PoolName;
+            }
         }
-
-        
     }
 
-    private void setLevel(List<GameObject> list)
+    private void RespawnTile()
     {
-        
-
-        for (int i = 0; i < desiredLevelCount; i++)
+        if(lastSpawnedTransform.position.y < -offset.y * .45f)
         {
-            int rnd = Random.Range(0, allLevelsList.Count);
-
-            GameObject obj = allLevelsList[rnd];
-            allLevelsList.Remove(obj);
-            list.Add(obj);
-
-
-            
-        }
-
-        
-    }
-
-    private void setPositions(List<GameObject> list)
-    {
-        Vector3 vec = new Vector3(0, 0, -2);
-
-        for (int i = 0; i < list.Count; i++)
-        {
-            list[i].transform.position = vec;
-            vec += offset;
+            lastSpawnedStageName = GetRandomStageName();
+            lastSpawnedTransform = SpawnObjFromPool(lastSpawnedStageName, spawnerPoint).transform;
+            Vector3 pos = Vector3.zero;
+            //lastSpawnedTransform.localPosition = pos;
+            pos.y += offset.y;
+            lastSpawnedTransform.localPosition = pos;
         }
     }
 
-    private void reSpawnTile(List<GameObject> list)
-    {
-        if(spawnedLevels1[0].transform.position.y < -offset.y)
-        {
-            int rnd = Random.Range(0, allLevelsList.Count);
-            spawnedLevels1[0].transform.position = spawnerPoint;
-            GameObject obj = spawnedLevels1[0];
-            allLevelsList.Add(obj);
-            spawnedLevels1.Remove(obj);
-            spawnedLevels1.Add(allLevelsList[rnd]);
-            spawnedLevels1[spawnedLevels1.Count - 1].transform.position = offset;
-
-            
-            
-        }
-    }
-
-    private void setMovementSpeed()
+    private void SetMovementSpeed()
     {
         if(GameManager.instance.gamesStarted && !GameManager.instance.gameOver)
         {
@@ -129,6 +107,31 @@ public class AdvancedLoopScript : MonoBehaviour
         {
             movementSpeed = 0;
         }
+    }
+
+    private void GetAllMagnets()
+    {
+        for (int i = 0; i < transform.childCount; i++)
+        {
+            if(transform.GetChild(i).GetComponent<StageMagnet>() != null)
+            {
+                for (int j = 0; j < transform.GetChild(i).GetComponent<StageMagnet>().magnetList.Count; j++)
+                {
+                    allMagnets.Add(transform.GetChild(i).GetComponent<StageMagnet>().magnetList[j].gameObject);
+                }
+            }
+            
+        }
+    }
+
+    private void SetActiveMagnet()
+    {
+        int x = Random.Range(0, allMagnets.Count);
+        for (int i = 0; i < allMagnets.Count; i++)
+        {
+            allMagnets[i].SetActive(false);
+        }
+        allMagnets[x].SetActive(true);
     }
 
 }

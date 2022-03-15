@@ -11,9 +11,5 @@ public class CyberBaloon : MonoBehaviour
         sb = GetComponent<StoreButton>();   
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-       
-    }
+    
 }

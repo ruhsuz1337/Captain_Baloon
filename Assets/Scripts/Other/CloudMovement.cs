@@ -30,7 +30,7 @@ public class CloudMovement : MonoBehaviour
 
         if (transform.position.x < -10)
         {
-            transform.position = new Vector3(10f, 0, 1);
+            transform.position = new Vector3(10f, 0, 5);
         }
         if (GameManager.instance.gameOver)
         {

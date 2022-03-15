@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DG.Tweening;
 
 public class GameManager : MonoBehaviour
 {
@@ -59,7 +60,8 @@ public class GameManager : MonoBehaviour
 
         totalGold = PlayerPrefs.GetInt("totalGold");
         //highScoreHeight = PlayerPrefs.GetInt("highscore");
-
+        //skinEffects();
+        
     }
 
     private void Update()
@@ -71,9 +73,48 @@ public class GameManager : MonoBehaviour
             tmpSessiongold = sessionGold;
         }
 
-        //Debug.Log(tmpSessiongold);
         
+        //Debug.Log(tmpSessiongold);
+
     }
+
+    
+
+    //public Color[] SpecialSkinColors;
+    //int currentColor = 0;
+    //Coroutine changeColorRoutine;
+    //private float changeColorSpeed = .5f;
+
+    //Color GetRandomColorFromPalette()
+    //{
+    //    int x = Random.Range(0, SpecialSkinColors.Length);
+    //    Color col = SpecialSkinColors[x];
+    //    if (x == currentColor) return GetRandomColorFromPalette();
+    //    currentColor = x;
+    //    return col;
+    //}
+
+    //public void skinEffects()
+    //{
+    //    if(!StoreController.instance.selectedBtn.hasEffects)
+    //    {
+    //        if(changeColorRoutine != null)
+    //            StopCoroutine(changeColorRoutine);
+    //        return;
+    //    }
+    //    changeColorRoutine = StartCoroutine(ChangeColorRoutine());
+
+    //}
+
+    //IEnumerator ChangeColorRoutine()
+    //{
+    //    while (true)
+    //    {
+    //        Color colour = GetRandomColorFromPalette();
+    //        playerSkinBaloon.DOColor(colour, changeColorSpeed).SetEase(Ease.Linear).SetLoops(2, LoopType.Yoyo);
+    //        yield return new WaitForSeconds(changeColorSpeed * 2 + .001f);
+    //    }
+    //}
 
     public void popUpAd()
     {
@@ -83,6 +124,11 @@ public class GameManager : MonoBehaviour
             interstitial.showads();
             PlayerPrefs.SetInt("restartCount", 0);
         }
+    }
+
+    public void rewardedAd()
+    {
+
     }
     private void FixedUpdate()
     {
@@ -104,7 +150,7 @@ public class GameManager : MonoBehaviour
     {
         if (gamesStarted && gameOver)
         {
-            SoundManager.instance.playDeathSound();
+            
             currentVerticalSpeed = 0;
             backgroundSpeed = 0;
             CanvasManager.instance.endGame();

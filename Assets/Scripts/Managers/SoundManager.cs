@@ -40,13 +40,17 @@ public class SoundManager : MonoBehaviour
             
 
     }
-
+    
+    public void playCrashSound()
+    {
+        soundPlayer.PlayOneShot(baloonBoom);
+    }
 
     public void playBranchCrash()
     {
         soundPlayer.PlayOneShot(branchCrash);
     }
-
+    
     public void buttonClicker()
     {
         soundPlayer.PlayOneShot(buttonClick);

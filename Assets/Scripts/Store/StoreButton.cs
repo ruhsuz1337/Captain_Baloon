@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
+using DG.Tweening;
 
 public class StoreButton : MonoBehaviour
 {
@@ -20,6 +21,8 @@ public class StoreButton : MonoBehaviour
     private int price;
     [SerializeField]
     private Sprite imageIcon;
+    [SerializeField]
+    public bool hasEffects;
 
     [Header("EditorStuff")]
     [SerializeField]
@@ -68,6 +71,11 @@ public class StoreButton : MonoBehaviour
 
     }
 
+    private void Update()
+    {
+        
+    }
+
     public void setText()
     {
         buttonText.text = desiredText;
@@ -79,6 +87,7 @@ public class StoreButton : MonoBehaviour
         img.sprite = imageIcon;
     }
 
+   
     public void onClick()
     {
         SoundManager.instance.buttonClicker();
@@ -88,7 +97,8 @@ public class StoreButton : MonoBehaviour
                 if (GameManager.instance.totalGold >= price)
                 {
 
-                    GameManager.instance.playerSkinBaloon.sprite = baloonSkin;
+                
+                GameManager.instance.playerSkinBaloon.sprite = baloonSkin;
                     GameManager.instance.playerSkinHat.sprite = baloonHat;
                     GameManager.instance.playerSkinTail.sprite = baloonTail;
                     StoreController.instance.setSelectedButton(gameObject.GetComponent<StoreButton>());
@@ -102,7 +112,8 @@ public class StoreButton : MonoBehaviour
             }
             else if (PlayerPrefs.GetInt(desiredText) == 1)
             {
-                GameManager.instance.playerSkinBaloon.sprite = baloonSkin;
+            
+            GameManager.instance.playerSkinBaloon.sprite = baloonSkin;
                 GameManager.instance.playerSkinHat.sprite = baloonHat;
                 GameManager.instance.playerSkinTail.sprite = baloonTail;
             //GameManager.instance.playerSkinTail.sprite = baloonTail;

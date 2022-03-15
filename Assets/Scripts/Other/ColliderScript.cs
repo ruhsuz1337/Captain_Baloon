@@ -8,18 +8,17 @@ public class ColliderScript : MonoBehaviour
 {
     // Start is called before the first frame update
 
-
     
 
-    
-    
+
+
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("obstacle"))
         {
-            
 
+            SoundManager.instance.playCrashSound();
             if (P_Manager.instance.invincibilityCount > 0 && !P_Manager.instance.invincibility)
             {
 
@@ -36,7 +35,7 @@ public class ColliderScript : MonoBehaviour
             }else if (!P_Manager.instance.invincibility)
             {
 
-                SoundManager.instance.playBranchCrash();
+                collision.gameObject.GetComponent<BoxCollider2D>().enabled = false;
                 GameManager.instance.gameOver = true;
                 GameManager.instance.totalGold += GameManager.instance.sessionGold;
 
@@ -56,10 +55,6 @@ public class ColliderScript : MonoBehaviour
 
                 P_Manager.instance.invincibilityCount--;
                 gameObject.GetComponent<P_invincibility>().turnOffCol();
-
-
-
-
             }
             else if (P_Manager.instance.invincibility)
             {
@@ -77,10 +72,7 @@ public class ColliderScript : MonoBehaviour
 
         if (collision.CompareTag("coin"))
         {
-            GameManager.instance.sessionGold++;
-            /*collision.gameObject.GetComponent<SpriteRenderer>().enabled = false;
-            collision.gameObject.GetComponent<BoxCollider2D>().enabled = false;*/
-            
+            GameManager.instance.sessionGold++;                        
             MMVibrationManager.Haptic(HapticTypes.LightImpact);
             SoundManager.instance.playCollectCoinSound();
             collision.gameObject.SetActive(false);

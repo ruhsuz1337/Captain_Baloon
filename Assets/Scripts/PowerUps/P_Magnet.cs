@@ -7,6 +7,7 @@ public class P_Magnet : MonoBehaviour
 {
 
     public GameObject player;
+    public ParticleSystem magnet;
     
     // Update is called once per frame
     void Update()

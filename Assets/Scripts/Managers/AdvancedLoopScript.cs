@@ -126,12 +126,18 @@ public class AdvancedLoopScript : B_PoolerBase
 
     private void SetActiveMagnet()
     {
-        int x = Random.Range(0, allMagnets.Count);
+        
         for (int i = 0; i < allMagnets.Count; i++)
         {
             allMagnets[i].SetActive(false);
         }
-        allMagnets[x].SetActive(true);
+
+        for (int i = 0; i < 10; i++)
+        {
+            int x = Random.Range(0, allMagnets.Count);
+            allMagnets[x].SetActive(true);
+        }
+        
     }
 
 }

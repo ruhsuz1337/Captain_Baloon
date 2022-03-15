@@ -12,6 +12,7 @@ public class StoreButton : MonoBehaviour
     public Sprite baloonSkin;      
     public Sprite baloonTail;
 
+
     [Header("Base Details")]
     [SerializeField]
     public string desiredText;
@@ -112,7 +113,7 @@ public class StoreButton : MonoBehaviour
                 selected = true;
             }
 
-        
+       
         
         
 

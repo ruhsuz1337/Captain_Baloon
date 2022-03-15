@@ -15,6 +15,7 @@ public class AdvancedLoopScript : MonoBehaviour
     private Transform endPos;
 
     public Vector3 offset;
+    public Vector3 spawnerPoint;
     public int desiredLevelCount;
 
     public List<GameObject> allLevelsList;
@@ -43,6 +44,7 @@ public class AdvancedLoopScript : MonoBehaviour
     {
         desiredSpeed = movementSpeed;
         offset = startPos.position - endPos.position;
+        spawnerPoint = new Vector3(100, 0, -2);
 
         spawnedLevels1 = new List<GameObject>();
 
@@ -63,7 +65,8 @@ public class AdvancedLoopScript : MonoBehaviour
 
         for (int i = 0; i < allLevelsList.Count; i++)
         {
-            Instantiate(allLevelsList[i], vec, Quaternion.identity);
+            GameObject obj = Instantiate(allLevelsList[i], vec, Quaternion.identity);
+            allLevelsList[i] = obj;
         }
 
         
@@ -101,17 +104,18 @@ public class AdvancedLoopScript : MonoBehaviour
 
     private void reSpawnTile(List<GameObject> list)
     {
-        for (int i = 0; i < list.Count; i++)
+        if(spawnedLevels1[0].transform.position.y < -offset.y)
         {
             int rnd = Random.Range(0, allLevelsList.Count);
-            if (list[i].transform.position.y <= -offset.y - 15f)
-            {
-                allLevelsList.Add(list[i]);
-                list.Remove(list[i]);
-                list[i] = allLevelsList[rnd];
-                list[i].transform.position = offset * list.Count;
-                
-            }
+            spawnedLevels1[0].transform.position = spawnerPoint;
+            GameObject obj = spawnedLevels1[0];
+            allLevelsList.Add(obj);
+            spawnedLevels1.Remove(obj);
+            spawnedLevels1.Add(allLevelsList[rnd]);
+            spawnedLevels1[spawnedLevels1.Count - 1].transform.position = offset;
+
+            
+            
         }
     }
 

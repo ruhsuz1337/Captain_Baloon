@@ -75,8 +75,7 @@ public class StoreController : MonoBehaviour
             if(buttonList[i].selected == true)
             {
                 PlayerPrefs.SetInt("selectedSkinIndex", i);
-                buttonList[i].buyButtonText.text = "Equipped";
-                buttonList[i].buyButtonText.color = Color.white;
+                buttonList[i].btn.image.sprite = buttonList[i].equipImage;
                 buttonList[i].btn.image.color = Color.red;
             }
             else
@@ -89,7 +88,7 @@ public class StoreController : MonoBehaviour
                 else
                 {
                     PlayerPrefs.SetInt(buttonList[i].desiredText, 1);
-                    buttonList[i].buyButtonText.text = "Equip";
+                    buttonList[i].btn.image.sprite = buttonList[i].equipImage;
                     buttonList[i].btn.image.color = Color.white;
                 }
 

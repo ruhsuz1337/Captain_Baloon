@@ -27,8 +27,9 @@ public class StoreButton : MonoBehaviour
     [Header("EditorStuff")]
     [SerializeField]
     public Button btn;
-    [SerializeField]
-    public TMP_Text buyButtonText;
+    public Sprite buyImage;
+    public Sprite ownedImage;
+    public Sprite equipImage;
 
 
     [SerializeField]
@@ -63,8 +64,8 @@ public class StoreButton : MonoBehaviour
         else 
         {
             PlayerPrefs.SetInt(desiredText, 1);
-            buyButtonText.text = "Equip";
-            btn.image.color = Color.white;
+            btn.image.sprite = equipImage;
+            
         }
        
         
@@ -105,8 +106,7 @@ public class StoreButton : MonoBehaviour
                     GameManager.instance.totalGold -= price;
                     PlayerPrefs.SetInt("totalGold", GameManager.instance.totalGold);
                     PlayerPrefs.SetInt(desiredText, 1);
-                    buyButtonText.text = "Owned";
-                   
+                    btn.image.sprite = ownedImage;
                     selected = true;
                 }
             }

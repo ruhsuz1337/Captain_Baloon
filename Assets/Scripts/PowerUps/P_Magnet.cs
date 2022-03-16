@@ -7,11 +7,13 @@ public class P_Magnet : MonoBehaviour
 {
 
     public GameObject player;
-    
+    public GameObject magnetParticle;
     // Update is called once per frame
     void Update()
     {
         transform.position = GameManager.instance.transform.position;
+        magnetParticle.transform.position = player.transform.position;
+        magnetParticle.transform.localScale = player.transform.localScale;
 
     }
 
@@ -21,6 +23,7 @@ public class P_Magnet : MonoBehaviour
     {
         if (collision.CompareTag("coin"))
         {
+            SoundManager.instance.playMagnetCoin();
             collision.gameObject.transform.DOMove(player.transform.position, .2f);              
             
         }

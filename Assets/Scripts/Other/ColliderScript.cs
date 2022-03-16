@@ -80,6 +80,7 @@ public class ColliderScript : MonoBehaviour
 
         if (collision.CompareTag("Pmagnet"))
         {
+            SoundManager.instance.playMagnetPickUp();
             collision.gameObject.GetComponent<SpriteRenderer>().enabled = false;
             P_Manager.instance.magnetActive = true;
             MMVibrationManager.Haptic(HapticTypes.MediumImpact);

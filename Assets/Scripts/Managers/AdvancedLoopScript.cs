@@ -18,9 +18,7 @@ public class AdvancedLoopScript : B_PoolerBase
     public Vector3 spawnerPoint;
     public int desiredLevelCount;
 
-    [SerializeField]
-    private List<GameObject> allMagnets;
-
+    
     Transform lastSpawnedTransform;
     string lastSpawnedStageName = "";
 
@@ -47,7 +45,7 @@ public class AdvancedLoopScript : B_PoolerBase
 
     private void Start()
     {
-        InitiatePooller(transform);
+        InitiatePooller(transform);       
         desiredSpeed = movementSpeed;
         //offset = startPos.position - endPos.position;
         spawnerPoint = new Vector3(0, 15, 0);
@@ -55,8 +53,6 @@ public class AdvancedLoopScript : B_PoolerBase
 
         spawnAllStages();
 
-        GetAllMagnets();
-        SetActiveMagnet();
 
     }
 
@@ -109,30 +105,13 @@ public class AdvancedLoopScript : B_PoolerBase
         }
     }
 
-    private void GetAllMagnets()
+    private void OnDisable()
     {
-        for (int i = 0; i < transform.childCount; i++)
-        {
-            if(transform.GetChild(i).GetComponent<StageMagnet>() != null)
-            {
-                for (int j = 0; j < transform.GetChild(i).GetComponent<StageMagnet>().magnetList.Count; j++)
-                {
-                    allMagnets.Add(transform.GetChild(i).GetComponent<StageMagnet>().magnetList[j].gameObject);
-                }
-            }
-            
-        }
+        instance = null;
     }
 
-    private void SetActiveMagnet()
-    {
-        int x = Random.Range(0, allMagnets.Count);
-        for (int i = 0; i < allMagnets.Count; i++)
-        {
-            allMagnets[i].SetActive(false);
-        }
-        allMagnets[x].SetActive(true);
-    }
+
+
 
 }
 

@@ -20,12 +20,10 @@ public class SoundManager : MonoBehaviour
     public AudioClip baloonBoom;
     public AudioClip birdWing;
     public AudioClip birdHit;
-    public AudioClip branchCrash;
     public AudioClip skinPurchase1;
     public AudioClip skinPurchase2;
-
-    public AudioClip invincibleCrash;
-
+    public AudioClip magnetPickUp;
+    public AudioClip magnetCoin;
 
     private void Awake()
     {
@@ -41,14 +39,18 @@ public class SoundManager : MonoBehaviour
 
     }
     
+    public void playMagnetPickUp()
+    {
+        soundPlayer.PlayOneShot(magnetPickUp);
+    }
     public void playCrashSound()
     {
         soundPlayer.PlayOneShot(baloonBoom);
     }
 
-    public void playBranchCrash()
+    public void playMagnetCoin()
     {
-        soundPlayer.PlayOneShot(branchCrash);
+        soundPlayer.PlayOneShot(magnetCoin);
     }
     
     public void buttonClicker()

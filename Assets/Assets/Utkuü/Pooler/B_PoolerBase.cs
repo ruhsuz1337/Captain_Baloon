@@ -45,7 +45,7 @@ public abstract class B_PoolerBase : MonoBehaviour
             {
                 var SpawnOffset = i * distanceFromSpawn + 30;
                 var SpawnPos = new Vector3(SpawnOffset, SpawnOffset, SpawnOffset);
-                var toSpawnObj = Instantiate(Pools.ObjectPrefab, parent);
+                var toSpawnObj = Instantiate(Pools.ObjectPrefab, parent); 
                 toSpawnObj.transform.rotation = Quaternion.identity;
                 ObjectSpawnHelper(toSpawnObj);
                 objPool.Enqueue(toSpawnObj);

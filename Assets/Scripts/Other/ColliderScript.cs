@@ -90,10 +90,23 @@ public class ColliderScript : MonoBehaviour
 
         }
 
+        if (collision.CompareTag("lucky"))
+        {
+            GameManager.instance.lucky = true;
+            StartCoroutine(BirdSpawner.instance.countdown());
+        }
 
 
 
 
 
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.CompareTag("lucky"))
+        {
+            GameManager.instance.lucky = false;
+        }
     }
 }

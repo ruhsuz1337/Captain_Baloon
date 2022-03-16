@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
+using MoreMountains.NiceVibrations;
 
 public class P_Magnet : MonoBehaviour
 {
@@ -24,6 +25,7 @@ public class P_Magnet : MonoBehaviour
         if (collision.CompareTag("coin"))
         {
             SoundManager.instance.playMagnetCoin();
+            
             collision.gameObject.transform.DOMove(player.transform.position, .2f);              
             
         }

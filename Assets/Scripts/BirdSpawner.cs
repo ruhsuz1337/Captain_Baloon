@@ -20,11 +20,25 @@ public class BirdSpawner : MonoBehaviour
     [SerializeField]
     private Transform rightSpawnPoint;
 
-    
+    public static BirdSpawner instance;
+    private void Awake()
+    {
+        if (instance != null)
+        {
+            Destroy(gameObject);
+        }
+        else
+        {
+            instance = this;
+        }
 
+
+        //
+
+    }
     void Start()
     {
-        StartCoroutine(countdown());
+        
        // minTime = (AdvancedLoopScript.instance.spawnedStages1.Count - 1) * 15;
         //maxTime = minTime + 15;
     }
@@ -33,7 +47,6 @@ public class BirdSpawner : MonoBehaviour
     void Update()
     {
         
-
     }
 
     private int randomTimer(int min, int max)
@@ -62,7 +75,7 @@ public class BirdSpawner : MonoBehaviour
         }
        
     }
-    IEnumerator countdown()
+    public IEnumerator countdown()
     {
         int t = randomTimer(minTime, maxTime);
         while (t != 0)
@@ -73,7 +86,7 @@ public class BirdSpawner : MonoBehaviour
         }
 
         spawnBird();
-        yield return countdown();
+        yield return null;
     }
 
 }

@@ -31,6 +31,8 @@ public class GameManager : MonoBehaviour
 
     private int tmpSessiongold;
 
+    public bool lucky;
+
     private void Awake()
     {
         if (instance != null)

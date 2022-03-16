@@ -22,6 +22,9 @@ public class AdvancedLoopScript : B_PoolerBase
     Transform lastSpawnedTransform;
     string lastSpawnedStageName = "";
 
+    public int DesiredLuckyLocation;
+    private int spawnedStageCount = 0;
+
 
     string GetRandomStageName()
     {
@@ -69,7 +72,10 @@ public class AdvancedLoopScript : B_PoolerBase
 
         for (int i = 0; i < PoolsList.Count; i++)
         {
-            GameObject obj = SpawnObjFromPool(GetRandomStageName(), vec);
+            string s = GetRandomStageName();
+            if (i == DesiredLuckyLocation || i == 10) {  s = "S11";  }
+            //GetRandomStageName()
+            GameObject obj = SpawnObjFromPool(s, vec);
             vec.y += offset.y ;
             obj.transform.parent = transform;
             if (i == PoolsList.Count - 1)
@@ -84,12 +90,25 @@ public class AdvancedLoopScript : B_PoolerBase
     {
         if(lastSpawnedTransform.position.y < -offset.y * .45f)
         {
+            spawnedStageCount++;
+            Vector3 pos = Vector3.zero;
+
+            if (spawnedStageCount >= DesiredLuckyLocation)
+            {
+                spawnedStageCount = 0;
+                lastSpawnedStageName = "S11";
+                lastSpawnedTransform = SpawnObjFromPool(lastSpawnedStageName, spawnerPoint).transform;
+                pos.y += offset.y;
+                lastSpawnedTransform.localPosition = pos;
+                return;
+            }
+
             lastSpawnedStageName = GetRandomStageName();
             lastSpawnedTransform = SpawnObjFromPool(lastSpawnedStageName, spawnerPoint).transform;
-            Vector3 pos = Vector3.zero;
             //lastSpawnedTransform.localPosition = pos;
             pos.y += offset.y;
             lastSpawnedTransform.localPosition = pos;
+
         }
     }
 

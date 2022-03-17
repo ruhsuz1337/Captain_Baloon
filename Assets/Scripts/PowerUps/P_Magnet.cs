@@ -25,7 +25,7 @@ public class P_Magnet : MonoBehaviour
         if (collision.CompareTag("coin"))
         {
             SoundManager.instance.playMagnetCoin();
-            
+            MMVibrationManager.Vibrate();
             collision.gameObject.transform.DOMove(player.transform.position, .2f);              
             
         }

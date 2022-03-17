@@ -34,39 +34,43 @@ public class StoreButton : MonoBehaviour
 
     [SerializeField]
     private TMP_Text buttonText;
-    
-
-    
-
-    
     [SerializeField]
     private TMP_Text priceText;
-
-    
-
-    
-
     [SerializeField]
     private Image img;
+    [SerializeField]
+    private TMP_Text story;
+    [SerializeField]
+    private Image goldIcon;
+    [SerializeField]
+    private string storyText;
 
     public bool selected;
-
+    private bool bought;
 
 
     private void Start()
     {
         setText();
         setImage();
+        story.text = storyText;
         if (PlayerPrefs.GetInt(desiredText) == 0)
         {
             PlayerPrefs.SetInt(desiredText, 0);
+            priceText.gameObject.SetActive(true);
+            goldIcon.gameObject.SetActive(true);
+            story.gameObject.SetActive(false);
         }
         else 
         {
             PlayerPrefs.SetInt(desiredText, 1);
-            btn.image.sprite = equipImage;
-            
+            btn.image.sprite = ownedImage;
+            priceText.gameObject.SetActive(false);
+            goldIcon.gameObject.SetActive(false);
+            story.gameObject.SetActive(true);
         }
+
+        
        
         
 
@@ -106,17 +110,20 @@ public class StoreButton : MonoBehaviour
                     GameManager.instance.totalGold -= price;
                     PlayerPrefs.SetInt("totalGold", GameManager.instance.totalGold);
                     PlayerPrefs.SetInt(desiredText, 1);
-                    btn.image.sprite = ownedImage;
+                    btn.image.sprite = equipImage;
+                    bought = true;
                     selected = true;
-                }
+                priceText.gameObject.SetActive(false);
+                goldIcon.gameObject.SetActive(false);
+                story.gameObject.SetActive(true);
+            }
             }
             else if (PlayerPrefs.GetInt(desiredText) == 1)
             {
             
-            GameManager.instance.playerSkinBaloon.sprite = baloonSkin;
+                GameManager.instance.playerSkinBaloon.sprite = baloonSkin;
                 GameManager.instance.playerSkinHat.sprite = baloonHat;
                 GameManager.instance.playerSkinTail.sprite = baloonTail;
-            //GameManager.instance.playerSkinTail.sprite = baloonTail;
                 StoreController.instance.setSelectedButton(gameObject.GetComponent<StoreButton>());
                 PlayerPrefs.SetInt(desiredText, 1);
                 

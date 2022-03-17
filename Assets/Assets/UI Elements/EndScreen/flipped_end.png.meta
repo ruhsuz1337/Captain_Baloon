@@ -1,7 +1,19 @@
 fileFormatVersion: 2
-guid: a5426bcb8d0d7ad43a81405735d06606
+guid: 5ed73c0ee5e06ef409852f01baf3095f
 TextureImporter:
-  internalIDToNameTable: []
+  internalIDToNameTable:
+  - first:
+      213: -5273904018396937419
+    second: flipped_end_0
+  - first:
+      213: 5717060942853036990
+    second: flipped_end_1
+  - first:
+      213: 2596389397610288473
+    second: flipped_end_2
+  - first:
+      213: 1865636228458376011
+    second: flipped_end_3
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -41,10 +53,10 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
-  alignment: 7
+  alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
   spritePixelsToUnits: 100
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
@@ -113,7 +125,91 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: flipped_end_0
+      rect:
+        serializedVersion: 2
+        x: 611
+        y: 1019
+        width: 1200
+        height: 1202
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 53302f3dc345fc6b0800000000000000
+      internalID: -5273904018396937419
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: flipped_end_1
+      rect:
+        serializedVersion: 2
+        x: 498
+        y: 656
+        width: 969
+        height: 213
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ebbd30223a4175f40800000000000000
+      internalID: 5717060942853036990
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: flipped_end_2
+      rect:
+        serializedVersion: 2
+        x: 496
+        y: 196
+        width: 971
+        height: 417
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 955d62f966a380420800000000000000
+      internalID: 2596389397610288473
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: flipped_end_3
+      rect:
+        serializedVersion: 2
+        x: 206
+        y: 29
+        width: 953
+        height: 123
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b4b6c55e34214e910800000000000000
+      internalID: 1865636228458376011
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []

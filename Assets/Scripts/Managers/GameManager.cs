@@ -122,7 +122,6 @@ public class GameManager : MonoBehaviour
     {
         if(PlayerPrefs.GetInt("restartCount") % desiredRestartCount == 0 && PlayerPrefs.GetInt("restartCount") != 0)
         {
-            Debug.Log("akdhasldasd");
             interstitial.showads();
             PlayerPrefs.SetInt("restartCount", 0);
         }

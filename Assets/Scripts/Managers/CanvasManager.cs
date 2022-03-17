@@ -97,7 +97,6 @@ public class CanvasManager : MonoBehaviour
         SoundManager.instance.buttonClicker();
         PlayerPrefs.SetInt("restartCount", PlayerPrefs.GetInt("restartCount") + 1);
         GameManager.instance.popUpAd();
-        Debug.Log(PlayerPrefs.GetInt("restartCount"));
 
     }
 

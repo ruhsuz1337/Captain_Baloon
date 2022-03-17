@@ -60,14 +60,24 @@ public class StoreButton : MonoBehaviour
             priceText.gameObject.SetActive(true);
             goldIcon.gameObject.SetActive(true);
             story.gameObject.SetActive(false);
+            btn.image.sprite = buyImage;
         }
         else 
         {
+            if (selected)
+            {
+                btn.image.sprite = equippedImg;
+            }
+            else
+            {
+                btn.image.sprite = equipImage;
+            }
             PlayerPrefs.SetInt(desiredText, 1);
             btn.image.sprite = equippedImg;
             priceText.gameObject.SetActive(false);
             goldIcon.gameObject.SetActive(false);
             story.gameObject.SetActive(true);
+            
         }
 
         

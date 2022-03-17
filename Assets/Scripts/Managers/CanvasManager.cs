@@ -22,7 +22,7 @@ public class CanvasManager : MonoBehaviour
     public TMP_Text totalGoldText;
     public TMP_Text endGameScoreText;
     public TMP_Text highScoreText;
-    public Image highScoreImage;
+    public GameObject highScoreImage;
     
     private bool storeOpen;
 
@@ -166,12 +166,12 @@ public class CanvasManager : MonoBehaviour
         //SoundManager.instance.buttonClick.Play();
         if (GameManager.instance.sessionHeight >= PlayerPrefs.GetFloat("highscore"))
         {
-            highScoreImage.enabled = true;
+            highScoreImage.SetActive(true);
             PlayerPrefs.SetFloat("highscore", GameManager.instance.sessionHeight);
         }
         else
         {
-            highScoreImage.enabled = false;   
+            highScoreImage.SetActive(false);   
         }
         setScoreText();
 

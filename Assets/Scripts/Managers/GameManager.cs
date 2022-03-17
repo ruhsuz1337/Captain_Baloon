@@ -51,8 +51,7 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
-        //
-        //restartCount = 0;
+       
         gamesStarted = false;
         gameOver = false;
         sessionGold = 0;
@@ -61,8 +60,7 @@ public class GameManager : MonoBehaviour
         StoreController.instance.getSelectedSkin();
 
         totalGold = PlayerPrefs.GetInt("totalGold");
-        //highScoreHeight = PlayerPrefs.GetInt("highscore");
-        //skinEffects();
+        
         
     }
 

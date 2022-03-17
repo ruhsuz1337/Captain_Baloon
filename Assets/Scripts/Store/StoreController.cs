@@ -75,21 +75,19 @@ public class StoreController : MonoBehaviour
             if(buttonList[i].selected == true)
             {
                 PlayerPrefs.SetInt("selectedSkinIndex", i);
-                buttonList[i].btn.image.sprite = buttonList[i].equipImage;
-                buttonList[i].btn.image.color = Color.red;
+                buttonList[i].btn.image.sprite = buttonList[i].equippedImg;
             }
             else
             {
                 if (PlayerPrefs.GetInt(buttonList[i].desiredText) == 0)
                 {
                     PlayerPrefs.SetInt(buttonList[i].desiredText, 0);
-                    buttonList[i].btn.image.color = Color.yellow;
+                    buttonList[i].btn.image.sprite = buttonList[i].buyImage;
                 }
                 else
                 {
                     PlayerPrefs.SetInt(buttonList[i].desiredText, 1);
                     buttonList[i].btn.image.sprite = buttonList[i].equipImage;
-                    buttonList[i].btn.image.color = Color.white;
                 }
 
                 

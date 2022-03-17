@@ -486,7 +486,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1674635640493666671}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 790744c462254b7ba8038e6ed28b3db2, type: 3}
   m_Name: 
@@ -778,14 +778,15 @@ MonoBehaviour:
   imageIcon: {fileID: 21300000, guid: a7988767541e6dd438411eacb58369e2, type: 3}
   hasEffects: 0
   btn: {fileID: 1674635640384387923}
-  buyImage: {fileID: 3597093031962982794, guid: d579c212cb87b824a86e41b5a10bad36, type: 3}
-  ownedImage: {fileID: -6076862538370070564, guid: d579c212cb87b824a86e41b5a10bad36, type: 3}
-  equipImage: {fileID: -7961217909949244175, guid: d579c212cb87b824a86e41b5a10bad36, type: 3}
+  buyImage: {fileID: 5884113048332137489, guid: 5c7d957fa070525438bf12fdeb4d81b7, type: 3}
+  equippedImg: {fileID: 423831546275672136, guid: 5c7d957fa070525438bf12fdeb4d81b7, type: 3}
+  equipImage: {fileID: 8452117395461991495, guid: 5c7d957fa070525438bf12fdeb4d81b7, type: 3}
   buttonText: {fileID: 1674635640493666673}
   priceText: {fileID: 1674635641897515111}
   img: {fileID: 1674635640360990257}
   story: {fileID: 1855531556190941472}
   goldIcon: {fileID: 1674635640597865551}
+  storyText: 
   selected: 0
 --- !u!1 &1674635641897515109
 GameObject:

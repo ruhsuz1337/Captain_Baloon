@@ -28,7 +28,7 @@ public class StoreButton : MonoBehaviour
     [SerializeField]
     public Button btn;
     public Sprite buyImage;
-    public Sprite ownedImage;
+    public Sprite equippedImg;
     public Sprite equipImage;
 
 
@@ -64,7 +64,7 @@ public class StoreButton : MonoBehaviour
         else 
         {
             PlayerPrefs.SetInt(desiredText, 1);
-            btn.image.sprite = ownedImage;
+            btn.image.sprite = equippedImg;
             priceText.gameObject.SetActive(false);
             goldIcon.gameObject.SetActive(false);
             story.gameObject.SetActive(true);
